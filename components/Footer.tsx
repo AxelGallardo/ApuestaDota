@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent",
     },
     headerText: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
         color: '#FFFFFF', // Cambiar a color blanco
