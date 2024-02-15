@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <LinearGradient
-      colors={['#000B43', '#3C3D6D', '#000650']}
+      colors={['#383A68', '#3C3D6D', '#151721']}
       style={styles.container}>
       <Header />
       <View style={styles.content}>

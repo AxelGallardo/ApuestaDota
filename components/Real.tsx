@@ -50,14 +50,91 @@ const RealList = () => {
             </View>
             <View style={styles.square}>
                 <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
-                    {isChecked && <Text style={styles.checkmark}>✓</Text>}
+                    {/* Agregar la imagen a la izquierda del círculo blanco */}
+                    <Image
+                        source={require('../images/ganarsiguiente.png')}
+                        style={styles.checkboxImage}
+                    />
                 </TouchableOpacity>
-                <Text style={styles.checkboxText}>Ganar la siguiente partida clasificatoria  {'\n'}{'\n'}
-                    Cuota: x 1.40
-                    {'\n'}Recompensa: x {searchText !== '' ? parseFloat(searchText) * 1.4 : '...'}</Text>
+                <Text style={styles.checkboxText}>
+                    <Text style={styles.boldText}>Ganar la siguiente partida clasificatoria</Text>{'\n\n'}
+                    <Text style={styles.yellowText}>Cuota:</Text>
+                    <Text style={styles.greenText}> x 1.40</Text>
+                    {'\n'}Recompensa: {searchText !== '' ? (parseFloat(searchText) * 1.4).toFixed(2) : '...'}
+                </Text>
 
                 {/* Agrega más checkboxes y texto aquí si es necesario */}
             </View>
+
+
+            <View style={styles.square}>
+                <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
+                    {/* Agregar la imagen a la izquierda del círculo blanco */}
+                    <Image
+                        source={require('../images/ganar2.png')}
+                        style={styles.checkboxImage}
+                    />
+                </TouchableOpacity>
+                <Text style={styles.checkboxText}>
+                    <Text style={styles.boldText}>Ganar con 0 muertes</Text>{'\n\n'}
+                    <Text style={styles.yellowText}>Cuota:</Text>
+                    <Text style={styles.greenText}> x 2.50</Text>
+                    {'\n'}Recompensa: {searchText !== '' ? (parseFloat(searchText) * 2.5).toFixed(2) : '...'}
+                </Text>
+
+                {/* Agrega más checkboxes y texto aquí si es necesario */}
+            </View>
+
+
+
+            <View style={styles.square}>
+                <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
+                    {/* Agregar la imagen a la izquierda del círculo blanco */}
+                    <Image
+                        source={require('../images/ganar3.png')}
+                        style={styles.checkboxImage}
+                    />
+                </TouchableOpacity>
+                <Text style={styles.checkboxText}>
+                    <Text style={styles.boldText}>Desafío Support:</Text> {'\n'}
+                    <Text style={styles.describirText}>
+                        Ganar con Crystal Maiden, {'\n'}
+                        Disruptor, Io, Oracle o {'\n'}
+                        Enigma
+                    </Text>
+                    {'\n'}{'\n'}
+                    <Text style={styles.yellowText}>Cuota:</Text>
+                    <Text style={styles.greenText}> x 1.42</Text>
+                    {'\n'}Recompensa: {searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...'}
+                </Text>
+
+                {/* Agrega más checkboxes y texto aquí si es necesario */}
+            </View>
+
+            <View style={styles.square}>
+                <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
+                    {/* Agregar la imagen a la izquierda del círculo blanco */}
+                    <Image
+                        source={require('../images/ganar4.png')}
+                        style={styles.checkboxImage}
+                    />
+                </TouchableOpacity>
+                <Text style={styles.checkboxText}>
+                    <Text style={styles.boldText}>Desafío Tanque:</Text> {'\n'}
+                    <Text style={styles.describirText}>
+                        Ganar con Pudge, Tiny {'\n'}
+                        Timbersaw, Beastmaster {'\n'}
+                        o Treant Protector
+                    </Text>
+                    {'\n'}{'\n'}
+                    <Text style={styles.yellowText}>Cuota:</Text>
+                    <Text style={styles.greenText}> x 1.42</Text>
+                    {'\n'}Recompensa: {searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...'}
+                </Text>
+
+                {/* Agrega más checkboxes y texto aquí si es necesario */}
+            </View>
+
 
         </View>
     );
@@ -95,25 +172,33 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     square: {
-        backgroundColor: 'transparent',
+        backgroundColor: '#1F1F37', // Cambiar el color del fondo a negro
         borderRadius: 20,
-        borderColor: '#B6FF40',
+        borderColor: '#1F1F37',
         borderWidth: 2,
         alignSelf: 'center',
         marginTop: 20,
         padding: 10,
         flexDirection: 'row', // Alinear elementos horizontalmente
         alignItems: 'center', // Centrar verticalmente
+        width: 320, // Ajusta el ancho de la imagen según sea necesario
+        height: 160, // Ajusta la altura de la imagen según sea necesario
     },
     checkbox: {
         width: 24,
         height: 24,
         borderRadius: 12,
         borderWidth: 2,
-        borderColor: '#B6FF40',
+        borderColor: 'transparent',
+        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 10, // Espacio a la derecha del círculo del check
+    },
+    checkboxImage: {
+        width: 60, // Ajusta el ancho de la imagen según sea necesario
+        height: 160, // Ajusta la altura de la imagen según sea necesario
+        marginRight: -500, // Espacio entre la imagen y el círculo blanco
     },
     checked: {
         backgroundColor: '#B6FF40',
@@ -125,7 +210,30 @@ const styles = StyleSheet.create({
     checkboxText: {
         color: 'white',
         fontSize: 16,
+        flexShrink: 1, // Permite que el texto se ajuste en caso de ser muy largo
     },
+
+    yellowText: {
+        color: '#EDBD0E',
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+
+    greenText: {
+        color: '#B6FF39',
+        fontWeight: 'bold',
+        fontSize: 18,
+    },
+
+    boldText: {
+        fontWeight: 'bold',
+    },
+
+    describirText: {
+        color: '#B3B3B3',
+        fontSize: 14,
+    },
+
     instructions: {
         color: 'white',
         marginTop: 10,

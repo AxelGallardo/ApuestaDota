@@ -26,7 +26,7 @@ const Footer = ({ changeContent }) => {
             <View style={styles.footer}>
                 <Button name="Real" label="Individual Real" />
                 <Button name="Practica" label="Individual Práctica" />
-                <Button name="Versus" label="5vs5 Versus" />
+                <Button name="Versus" label="5-5 Versus" />
             </View>
         </View>
     );
