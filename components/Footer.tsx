@@ -1,68 +1,80 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-
-// Importa las imágenes de los íconos
-import chatIcon from '../images/chats.png';
-import walkIcon from '../images/paseo.png';
-import hearingIcon from '../images/susurros.png';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Footer = ({ changeContent }) => {
+    const [selectedButton, setSelectedButton] = useState(null);
+
+    const handleButtonPress = (buttonName) => {
+        changeContent(buttonName);
+        setSelectedButton(buttonName);
+    };
+
+    const Button = ({ name, label }) => (
+        <TouchableOpacity
+            style={[styles.button, selectedButton === name && styles.selectedButton]}
+            onPress={() => handleButtonPress(name)}>
+            <Text style={[styles.buttonText, selectedButton === name && styles.selectedButtonText]}>
+                <Text style={styles.buttonLine}>{label.split(' ')[0]}</Text>{'\n'}
+                <Text style={styles.buttonLine}>{label.split(' ')[1]}</Text>
+            </Text>
+        </TouchableOpacity>
+    );
+
     return (
-        <View style={styles.footer}>
-            <TouchableOpacity style={styles.button} onPress={() => changeContent('Chat')}>
-                <LinearGradient colors={['#9F05F2', '#550096']} style={styles.gradient}>
-                    <Image source={chatIcon} style={styles.icon} />
-                    <Text style={styles.buttonText}>Chat</Text>
-                </LinearGradient>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => changeContent('Paseo')}>
-                <LinearGradient colors={['#9F05F2', '#550096']} style={styles.gradient}>
-                    <Image source={walkIcon} style={styles.icon} />
-                    <Text style={styles.buttonText}>Paseo</Text>
-                </LinearGradient>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => changeContent('Susurros')}>
-                <LinearGradient colors={['#9F05F2', '#550096']} style={styles.gradient}>
-                    <Image source={hearingIcon} style={styles.icon} />
-                    <Text style={styles.buttonText}>Susurros</Text>
-                </LinearGradient>
-            </TouchableOpacity>
+        <View style={styles.container}>
+            <Text style={styles.headerText}>Elige el tipo de apuesta</Text>
+            <View style={styles.footer}>
+                <Button name="Real" label="Individual Real" />
+                <Button name="Practica" label="Individual Práctica" />
+                <Button name="Versus" label="5vs5 Versus" />
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        padding: 10,
+        backgroundColor: "transparent",
+    },
+    headerText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#FFFFFF', // Cambiar a color blanco
+        marginBottom: 10,
+    },
     footer: {
-        backgroundColor: 'transparent',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        paddingVertical: 10,
     },
     button: {
-        width: 100, // Ancho suficiente para contener la palabra "Susurros"
-        height: 65, // Establece un alto fijo para todos los botones
+        width: 100,
+        height: 65,
         borderRadius: 15,
-        overflow: 'hidden', // Necesario para que el degradado no se vea cortado
+        overflow: 'hidden',
+        elevation: 5,
+        backgroundColor: '#3E3E70', // Color de botón gris
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    gradient: {
-        flex: 1, // Asegura que el gradiente ocupe todo el espacio dentro del botón
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-        flexDirection: 'column', // Cambiado a columna para apilar ícono y texto verticalmente
-        alignItems: 'center', // Alinea ícono y texto verticalmente al centro
+    selectedButton: {
+        backgroundColor: '#B6FF40', // Color de botón verde cuando está seleccionado
     },
     buttonText: {
-        color: 'white',
-        fontSize: 12,
-        marginTop: 5, // Añadido margen arriba para separar texto del ícono
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#FFFFFF',
     },
-    icon: {
-        width: 25,
-        height: 25,
-        marginBottom: 2, // Añadido margen abajo para separar ícono del texto
-        marginRight: 0, // Añadido margen para separar el ícono del texto
+    selectedButtonText: {
+        color: '#000000', // Color de texto negro cuando está seleccionado
+    },
+    buttonLine: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
 

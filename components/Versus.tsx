@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 
-const Susurros = () => {
+const versus = () => {
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
     const flatListRef = useRef(null);
@@ -136,4 +136,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Susurros;
+export default versus;

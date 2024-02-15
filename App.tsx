@@ -3,12 +3,12 @@ import { View, StyleSheet } from 'react-native';
 import Header from './components/Header';
 import LinearGradient from 'react-native-linear-gradient';
 import Footer from './components/Footer';
-import Chat from './components/Chat';
-import Paseo from './components/Paseo';
-import Susurros from './components/Susurros';
+import Real from './components/Real';
+import Practica from './components/Practica';
+import Versus from './components/Versus';
 
 const App = () => {
-  const [content, setContent] = useState('Chat');
+  const [content, setContent] = useState('Real');
 
   const changeContent = (selectedContent) => {
     setContent(selectedContent);
@@ -16,12 +16,12 @@ const App = () => {
 
   const renderContent = () => {
     switch (content) {
-      case 'Chat':
-        return <Chat />;
-      case 'Paseo':
-        return <Paseo />;
-      case 'Susurros':
-        return <Susurros />;
+      case 'Real':
+        return <Real />;
+      case 'Practica':
+        return <Practica />;
+      case 'Versus':
+        return < Versus />;
       default:
         return null;
     }
@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <LinearGradient
-      colors={['#540095', '#9B01CF', '#4B0082']}
+      colors={['#000B43', '#3C3D6D', '#000650']}
       style={styles.container}>
       <Header />
       <View style={styles.content}>

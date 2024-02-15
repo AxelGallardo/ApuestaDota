@@ -17,7 +17,7 @@ const Header = () => {
         <View style={styles.header}>
 
             <View style={styles.olimpoContainer}>
-                <Image source={require('../images/olimpochat.png')} style={styles.headerImage} />
+                <Image source={require('../images/apuestadota.png')} style={styles.headerImage} />
             </View>
             <View style={styles.switchContainer}>
                 <Switch
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
         fontSize: 12, // Ajustado el tamaño de fuente
     },
     headerImage: {
-        width: 150, // Ajusta el ancho de la imagen según sea necesario
-        height: 30, // Ajusta el alto de la imagen según sea necesario
+        width: 250, // Ajusta el ancho de la imagen según sea necesario
+        height: 36, // Ajusta el alto de la imagen según sea necesario
     },
     settingsButton: {
         padding: 10,

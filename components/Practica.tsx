@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Paseo = () => {
+const Practica = () => {
     return (
         <View style={styles.chat}>
-            <Text style={styles.chatText}>Paseo</Text>
+            <Text style={styles.chatText}>Practica</Text>
         </View>
     );
 };
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Paseo;
+export default Practica;
