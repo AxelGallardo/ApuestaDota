@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import Real from './components/Real';
 import Practica from './components/Practica';
 import Versus from './components/Versus';
+import Carousel from 'react-native-snap-carousel';
+
 
 const App = () => {
   const [content, setContent] = useState('Real');

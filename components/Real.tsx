@@ -7,25 +7,80 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native';
+import Carousel, { CarouselProps } from 'react-native-snap-carousel';
 
-const RealList = () => {
-    const [searchText, setSearchText] = useState('');
-    const [isChecked, setIsChecked] = useState(false);
+interface Square {
+    title: string;
+    subtitle?: string;
+    cuota: string;
+    recompensa: string;
+    image: any;
+}
 
-    // Función para validar y actualizar el valor del input
-    const handleInputChange = (text) => {
-        // Expresión regular para aceptar solo números y decimales hasta 2 cifras
-        const regex = /^[0-9]*(\.[0-9]{0,2})?$/;
-        // Si el texto cumple con la expresión regular o está vacío, y es menor o igual a 50, actualizamos el estado
+const RealList: React.FC = () => {
+    const [searchText, setSearchText] = useState<string>('');
+    const [isChecked, setIsChecked] = useState<boolean>(false);
+
+    const handleInputChange = (text: string): void => {
+        const regex: RegExp = /^[0-9]*(\.[0-9]{0,2})?$/;
         if (text === '' || (regex.test(text) && parseFloat(text) <= 50)) {
             setSearchText(text);
         }
     };
 
-    // Función para manejar el cambio de estado del checkbox
-    const toggleCheckbox = () => {
+    const toggleCheckbox = (): void => {
         setIsChecked(!isChecked);
     };
+
+    const squares: Square[] = [
+        {
+            title: 'Ganar la siguiente partida clasificatoria',
+            subtitle: '',
+            cuota: '1.40',
+            recompensa: searchText !== '' ? (parseFloat(searchText) * 1.4).toFixed(2) : '...',
+            image: require('../images/ganarsiguiente.png')
+        },
+        {
+            title: 'Ganar con 0 muertes',
+            subtitle: '',
+            cuota: '2.50',
+            recompensa: searchText !== '' ? (parseFloat(searchText) * 2.5).toFixed(2) : '...',
+            image: require('../images/ganar2.png')
+        },
+        {
+            title: 'Desafío Support',
+            subtitle: 'Ganar con Crystal Maiden, Disruptor, Io, Oracle o Enigma',
+            cuota: '1.42',
+            recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
+            image: require('../images/ganar3.png')
+        },
+        {
+            title: 'Desafío Tanque',
+            subtitle: 'Ganar con Pudge, Tiny, Timbersaw, Beastmaster o Treant Protector',
+            cuota: '1.42',
+            recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
+            image: require('../images/ganar4.png')
+        },
+    ];
+
+    const renderSquare = ({ item }: { item: Square }): JSX.Element => (
+        <View style={styles.square}>
+            <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
+                <Image
+                    source={item.image}
+                    style={styles.checkboxImage}
+                />
+            </TouchableOpacity>
+            <Text style={styles.checkboxText}>
+                <Text style={styles.boldText}>{item.title}</Text>{'\n\n'}
+                {item.subtitle ? <Text style={styles.describirText}>{item.subtitle}</Text> : null}
+                {'\n\n'}
+                <Text style={styles.yellowText}>Cuota:</Text>
+                <Text style={styles.greenText}> x {item.cuota}</Text>
+                {'\n'}Recompensa: {item.recompensa}
+            </Text>
+        </View>
+    );
 
     return (
         <View style={styles.container}>
@@ -41,101 +96,22 @@ const RealList = () => {
                         onChangeText={handleInputChange}
                         placeholder="Ingresa el monto a apostar..."
                         placeholderTextColor="white"
-                        keyboardType="numeric" // Establecer el teclado numérico
+                        keyboardType="numeric"
                     />
                 </View>
                 <Text style={styles.instructions}>
                     El monto de apuesta es de 1 a 50 soles
                 </Text>
             </View>
-            <View style={styles.square}>
-                <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
-                    {/* Agregar la imagen a la izquierda del círculo blanco */}
-                    <Image
-                        source={require('../images/ganarsiguiente.png')}
-                        style={styles.checkboxImage}
-                    />
-                </TouchableOpacity>
-                <Text style={styles.checkboxText}>
-                    <Text style={styles.boldText}>Ganar la siguiente partida clasificatoria</Text>{'\n\n'}
-                    <Text style={styles.yellowText}>Cuota:</Text>
-                    <Text style={styles.greenText}> x 1.40</Text>
-                    {'\n'}Recompensa: {searchText !== '' ? (parseFloat(searchText) * 1.4).toFixed(2) : '...'}
-                </Text>
 
-                {/* Agrega más checkboxes y texto aquí si es necesario */}
-            </View>
-
-
-            <View style={styles.square}>
-                <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
-                    {/* Agregar la imagen a la izquierda del círculo blanco */}
-                    <Image
-                        source={require('../images/ganar2.png')}
-                        style={styles.checkboxImage}
-                    />
-                </TouchableOpacity>
-                <Text style={styles.checkboxText}>
-                    <Text style={styles.boldText}>Ganar con 0 muertes</Text>{'\n\n'}
-                    <Text style={styles.yellowText}>Cuota:</Text>
-                    <Text style={styles.greenText}> x 2.50</Text>
-                    {'\n'}Recompensa: {searchText !== '' ? (parseFloat(searchText) * 2.5).toFixed(2) : '...'}
-                </Text>
-
-                {/* Agrega más checkboxes y texto aquí si es necesario */}
-            </View>
-
-
-
-            <View style={styles.square}>
-                <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
-                    {/* Agregar la imagen a la izquierda del círculo blanco */}
-                    <Image
-                        source={require('../images/ganar3.png')}
-                        style={styles.checkboxImage}
-                    />
-                </TouchableOpacity>
-                <Text style={styles.checkboxText}>
-                    <Text style={styles.boldText}>Desafío Support:</Text> {'\n'}
-                    <Text style={styles.describirText}>
-                        Ganar con Crystal Maiden, {'\n'}
-                        Disruptor, Io, Oracle o {'\n'}
-                        Enigma
-                    </Text>
-                    {'\n'}{'\n'}
-                    <Text style={styles.yellowText}>Cuota:</Text>
-                    <Text style={styles.greenText}> x 1.42</Text>
-                    {'\n'}Recompensa: {searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...'}
-                </Text>
-
-                {/* Agrega más checkboxes y texto aquí si es necesario */}
-            </View>
-
-            <View style={styles.square}>
-                <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
-                    {/* Agregar la imagen a la izquierda del círculo blanco */}
-                    <Image
-                        source={require('../images/ganar4.png')}
-                        style={styles.checkboxImage}
-                    />
-                </TouchableOpacity>
-                <Text style={styles.checkboxText}>
-                    <Text style={styles.boldText}>Desafío Tanque:</Text> {'\n'}
-                    <Text style={styles.describirText}>
-                        Ganar con Pudge, Tiny {'\n'}
-                        Timbersaw, Beastmaster {'\n'}
-                        o Treant Protector
-                    </Text>
-                    {'\n'}{'\n'}
-                    <Text style={styles.yellowText}>Cuota:</Text>
-                    <Text style={styles.greenText}> x 1.42</Text>
-                    {'\n'}Recompensa: {searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...'}
-                </Text>
-
-                {/* Agrega más checkboxes y texto aquí si es necesario */}
-            </View>
-
-
+            <Carousel
+                data={squares}
+                renderItem={renderSquare}
+                sliderWidth={400}
+                itemWidth={320}
+                layout="default"
+                loop={true}
+            />
         </View>
     );
 };
@@ -172,17 +148,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     square: {
-        backgroundColor: '#1F1F37', // Cambiar el color del fondo a negro
+        backgroundColor: '#1F1F37',
         borderRadius: 20,
         borderColor: '#1F1F37',
         borderWidth: 2,
         alignSelf: 'center',
         marginTop: 20,
         padding: 10,
-        flexDirection: 'row', // Alinear elementos horizontalmente
-        alignItems: 'center', // Centrar verticalmente
-        width: 320, // Ajusta el ancho de la imagen según sea necesario
-        height: 160, // Ajusta la altura de la imagen según sea necesario
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 320,
+        height: 160,
     },
     checkbox: {
         width: 24,
@@ -193,12 +169,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
-        marginRight: 10, // Espacio a la derecha del círculo del check
+        marginRight: 10,
     },
     checkboxImage: {
-        width: 60, // Ajusta el ancho de la imagen según sea necesario
-        height: 160, // Ajusta la altura de la imagen según sea necesario
-        marginRight: -500, // Espacio entre la imagen y el círculo blanco
+        width: 60,
+        height: 160,
+        marginRight: -500,
     },
     checked: {
         backgroundColor: '#B6FF40',
@@ -210,30 +186,25 @@ const styles = StyleSheet.create({
     checkboxText: {
         color: 'white',
         fontSize: 16,
-        flexShrink: 1, // Permite que el texto se ajuste en caso de ser muy largo
+        flexShrink: 1,
     },
-
     yellowText: {
         color: '#EDBD0E',
         fontWeight: 'bold',
         fontSize: 16,
     },
-
     greenText: {
         color: '#B6FF39',
         fontWeight: 'bold',
         fontSize: 18,
     },
-
     boldText: {
         fontWeight: 'bold',
     },
-
     describirText: {
         color: '#B3B3B3',
         fontSize: 14,
     },
-
     instructions: {
         color: 'white',
         marginTop: 10,
