@@ -6,19 +6,14 @@ import {
     StyleSheet,
     Image,
     TouchableOpacity,
-    Button, // Importa el componente Button
+    ScrollView,
 } from 'react-native';
 import Carousel, { CarouselProps } from 'react-native-snap-carousel';
+import { Square } from '../components/Square';
 
-interface Square {
-    title: string;
-    subtitle?: string;
-    cuota: string;
-    recompensa: string;
-    image: any;
-}
+interface Props { }
 
-const RealList: React.FC = () => {
+const RealList: React.FC<Props> = () => {
     const [searchText, setSearchText] = useState<string>('');
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
@@ -84,7 +79,7 @@ const RealList: React.FC = () => {
     );
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.searchContainer}>
                 <View style={styles.searchInputContainer}>
                     <Image
@@ -114,13 +109,14 @@ const RealList: React.FC = () => {
                 loop={true}
             />
 
-            {/* Agrega el botón aquí */}
             <View style={styles.buttonContainer}>
                 <TouchableOpacity onPress={() => console.log("Apostar")} style={[styles.button, { backgroundColor: '#B6FF40' }]}>
                     <Text style={styles.buttonText}>Apostar</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+
+            <View style={styles.rectangle} />
+        </ScrollView>
     );
 };
 
@@ -162,6 +158,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         alignSelf: 'center',
         marginTop: 20,
+        marginBottom: 40,
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
@@ -219,7 +216,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     buttonContainer: {
-        marginBottom: 300,
+        marginBottom: 12,
         alignItems: 'center', // Centra el botón horizontalmente
         width: '100%', // Ajusta el ancho del contenedor del botón
         color: 'black', // Define el color del texto como negro
@@ -238,6 +235,13 @@ const styles = StyleSheet.create({
         color: 'black', // Color del texto
         fontSize: 18,
         fontWeight: 'bold',
+    },
+    rectangle: {
+        marginTop: 30, // Espaciado añadido para separar el rectángulo del botón
+        width: 300,
+        height: 350,
+        backgroundColor: 'black', // Color negro
+        alignSelf: 'center', // Centra horizontalmente
     },
 });
 
