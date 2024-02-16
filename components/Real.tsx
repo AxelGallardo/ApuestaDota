@@ -115,7 +115,27 @@ const RealList: React.FC<Props> = () => {
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.rectangle} />
+            <View style={styles.rectangle}>
+                <Text style={styles.rectangleTitle}>REGLAS DEL JUEGO{'\n'}</Text>
+                <Text style={styles.rectangleSubtitle}>ANTES DE APOSTAR:</Text>
+                <Text style={styles.rectangleText}>
+
+                    Recuerda, poner primero la apuesta y después buscar la partida clasificatoria.{'\n'}{'\n'}
+
+                    No se tolerará cuentas <Text style={styles.greenTextReglas}>“smurf”</Text> o <Text style={styles.greenTextReglas}>“boosters”</Text> en el juego, evita que tu cuenta sea deshabilitada para siempre y juega con tu cuenta y medalla real.{'\n'}{'\n'}
+
+                    Las partidas de ranked grupal <Text style={styles.greenTextReglas}>NO</Text> están permitidas, si lo haces tu partida será identificada y serás penalizado.{'\n'}{'\n'}
+
+                    Una vez ejecutada la apuesta tienes <Text style={styles.greenTextReglas}>25 minutos para empezar a jugar </Text>en modo clasificatoria.{'\n'}{'\n'}
+
+                    No está permitido utilizar cuentas secundarias para ingresar a partidas repletas de novatos abusando de jugadores que recién empiezan. {'\n'}{'\n'}
+                </Text>
+                <Text style={styles.rectangleSubtitle}>APUESTA POR MEDALLA:</Text>
+                <Text style={styles.rectangleText}>Hasta Guardián, monto máximo de apuesta es de 10 soles.
+                    {'\n'}{'\n'}Desde Cruzado, monto máximo de apuesta es de 50 soles.{'\n'}{'\n'}
+                </Text>
+            </View>
+
         </ScrollView>
     );
 };
@@ -128,6 +148,7 @@ const styles = StyleSheet.create({
     },
     searchContainer: {
         marginBottom: 10,
+        marginTop: 10,
     },
     searchInputContainer: {
         flexDirection: 'row',
@@ -213,10 +234,12 @@ const styles = StyleSheet.create({
     instructions: {
         color: 'white',
         marginTop: 10,
+        marginBottom: 50,
         textAlign: 'center',
     },
     buttonContainer: {
-        marginBottom: 12,
+        marginBottom: 60,
+        marginTop: 50,
         alignItems: 'center', // Centra el botón horizontalmente
         width: '100%', // Ajusta el ancho del contenedor del botón
         color: 'black', // Define el color del texto como negro
@@ -238,11 +261,44 @@ const styles = StyleSheet.create({
     },
     rectangle: {
         marginTop: 30, // Espaciado añadido para separar el rectángulo del botón
-        width: 300,
-        height: 350,
-        backgroundColor: 'black', // Color negro
+        marginBottom: 30,
+        width: 370,
+        height: 500,
+        backgroundColor: '#1C1C38', // Color negro
         alignSelf: 'center', // Centra horizontalmente
+        borderRadius: 15,
     },
+
+    rectangleTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'white',
+        textAlign: 'center',
+        marginTop: 20,
+    },
+    rectangleSubtitle: {
+        fontSize: 14,
+        color: '#B6FF40',
+        textAlign: 'center',
+        marginTop: 10,
+    },
+
+    rectangleText: {
+        fontSize: 12,
+        color: 'white',
+        textAlign: 'center',
+        marginTop: 10,
+        padding: 10,
+        textAlign: 'justify', // Justificar el texto
+    },
+
+    greenTextReglas: {
+        color: '#B6FF39',
+        fontWeight: 'bold',
+        fontSize: 12,
+    },
+
+
 });
 
 export default RealList;
