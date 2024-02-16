@@ -6,6 +6,7 @@ import {
     StyleSheet,
     Image,
     TouchableOpacity,
+    Button, // Importa el componente Button
 } from 'react-native';
 import Carousel, { CarouselProps } from 'react-native-snap-carousel';
 
@@ -19,7 +20,7 @@ interface Square {
 
 const RealList: React.FC = () => {
     const [searchText, setSearchText] = useState<string>('');
-    const [isChecked, setIsChecked] = useState<boolean>(false);
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     const handleInputChange = (text: string): void => {
         const regex: RegExp = /^[0-9]*(\.[0-9]{0,2})?$/;
@@ -28,44 +29,44 @@ const RealList: React.FC = () => {
         }
     };
 
-    const toggleCheckbox = (): void => {
-        setIsChecked(!isChecked);
+    const toggleCheckbox = (index: number): void => {
+        setSelectedIndex(prevIndex => prevIndex === index ? null : index);
     };
 
     const squares: Square[] = [
         {
             title: 'Ganar la siguiente partida clasificatoria',
-            subtitle: '',
+            subtitle: 'Juega con tu héroe favorito',
             cuota: '1.40',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 1.4).toFixed(2) : '...',
             image: require('../images/ganarsiguiente.png')
         },
         {
             title: 'Ganar con 0 muertes',
-            subtitle: '',
+            subtitle: 'Juega con tu héroe favorito \npero no mueras',
             cuota: '2.50',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 2.5).toFixed(2) : '...',
             image: require('../images/ganar2.png')
         },
         {
             title: 'Desafío Support',
-            subtitle: 'Ganar con Crystal Maiden, Disruptor, Io, Oracle o Enigma',
+            subtitle: 'Ganar con Crystal Maiden, \nDisruptor, Io, Oracle o Enigma',
             cuota: '1.42',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
             image: require('../images/ganar3.png')
         },
         {
             title: 'Desafío Tanque',
-            subtitle: 'Ganar con Pudge, Tiny, Timbersaw, Beastmaster o Treant Protector',
+            subtitle: 'Ganar con Pudge, Tiny, Treant P.\nTimbersaw o Beastmaster',
             cuota: '1.42',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
             image: require('../images/ganar4.png')
         },
     ];
 
-    const renderSquare = ({ item }: { item: Square }): JSX.Element => (
+    const renderSquare = ({ item, index }: { item: Square; index: number }): JSX.Element => (
         <View style={styles.square}>
-            <TouchableOpacity onPress={toggleCheckbox} style={[styles.checkbox, isChecked && styles.checked]}>
+            <TouchableOpacity onPress={() => toggleCheckbox(index)} style={[styles.checkbox, selectedIndex === index && styles.checked]}>
                 <Image
                     source={item.image}
                     style={styles.checkboxImage}
@@ -112,6 +113,13 @@ const RealList: React.FC = () => {
                 layout="default"
                 loop={true}
             />
+
+            {/* Agrega el botón aquí */}
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity onPress={() => console.log("Apostar")} style={[styles.button, { backgroundColor: '#B6FF40' }]}>
+                    <Text style={styles.buttonText}>Apostar</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
@@ -209,6 +217,27 @@ const styles = StyleSheet.create({
         color: 'white',
         marginTop: 10,
         textAlign: 'center',
+    },
+    buttonContainer: {
+        marginBottom: 300,
+        alignItems: 'center', // Centra el botón horizontalmente
+        width: '100%', // Ajusta el ancho del contenedor del botón
+        color: 'black', // Define el color del texto como negro
+    },
+    apostarButton: {
+        color: 'black', // Define el color del texto como negro
+    },
+    button: {
+        width: 200,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+    },
+    buttonText: {
+        color: 'black', // Color del texto
+        fontSize: 18,
+        fontWeight: 'bold',
     },
 });
 
