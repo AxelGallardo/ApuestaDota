@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     apuestasRealizadas: {
         marginTop: 30, // Espaciado añadido para separar el rectángulo del botón
         marginBottom: 30,
-        width: 370,
+        width: 320,
         minHeight: 50, // Cambiado a minHeight para que el contenedor se expanda verticalmente si es necesario
         backgroundColor: '#1C1C38', // Color negro
         alignSelf: 'center', // Centra horizontalmente
@@ -300,7 +300,7 @@ const styles = StyleSheet.create({
     rectangle: {
         marginTop: 30, // Espaciado añadido para separar el rectángulo del botón
         marginBottom: 30,
-        width: 370,
+        width: 350,
         height: 500,
         backgroundColor: '#1C1C38', // Color negro
         alignSelf: 'center', // Centra horizontalmente

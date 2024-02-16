@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Footer = ({ changeContent }) => {
-    const [selectedButton, setSelectedButton] = useState(null);
+    const [selectedButton, setSelectedButton] = useState('Real'); // Configurar 'Real' como seleccionado inicialmente
 
     const handleButtonPress = (buttonName) => {
         changeContent(buttonName);
