@@ -52,7 +52,7 @@ const RealList: React.FC<Props> = () => {
         },
         {
             title: 'Desafío Tanque',
-            subtitle: 'Ganar con Pudge, Tiny, Treant P.\nTimbersaw o Beastmaster',
+            subtitle: 'Ganar con Pudge, Tiny, Treant\nTimbersaw o Beastmaster',
             cuota: '1.42',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
             image: require('../images/ganar4.png')
@@ -114,6 +114,20 @@ const RealList: React.FC<Props> = () => {
                     <Text style={styles.buttonText}>Apostar</Text>
                 </TouchableOpacity>
             </View>
+
+
+            <View style={styles.apuestasRealizadas}>
+                <Text style={styles.apuestasRealizadasTitle}>APUESTAS REALIZADAS</Text>
+
+
+            </View>
+
+            <View style={styles.apuestasRealizadas}>
+                <Text style={styles.apuestasRealizadasTitle}>APUESTAS DE LA COMUNIDAD</Text>
+
+
+            </View>
+
 
             <View style={styles.rectangle}>
                 <Text style={styles.rectangleTitle}>REGLAS DEL JUEGO{'\n'}</Text>
@@ -184,7 +198,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: 320,
-        height: 160,
+        height: 180,
     },
     checkbox: {
         width: 24,
@@ -199,7 +213,7 @@ const styles = StyleSheet.create({
     },
     checkboxImage: {
         width: 60,
-        height: 160,
+        height: 180,
         marginRight: -500,
     },
     checked: {
@@ -242,7 +256,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
         alignItems: 'center', // Centra el botón horizontalmente
         width: '100%', // Ajusta el ancho del contenedor del botón
-        color: 'black', // Define el color del texto como negro
+        color: 'black', // Define el color del texto como negro 0000.00
     },
     apostarButton: {
         color: 'black', // Define el color del texto como negro
@@ -259,6 +273,30 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
+
+    apuestasRealizadas: {
+        marginTop: 30, // Espaciado añadido para separar el rectángulo del botón
+        marginBottom: 30,
+        width: 370,
+        minHeight: 50, // Cambiado a minHeight para que el contenedor se expanda verticalmente si es necesario
+        backgroundColor: '#1C1C38', // Color negro
+        alignSelf: 'center', // Centra horizontalmente
+        borderRadius: 15,
+        borderColor: '#B6FF40',
+        borderWidth: 2,
+        justifyContent: 'center', // Centra verticalmente
+    },
+
+    apuestasRealizadasTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'white',
+        textAlign: 'center',
+    },
+
+
+
+
     rectangle: {
         marginTop: 30, // Espaciado añadido para separar el rectángulo del botón
         marginBottom: 30,
