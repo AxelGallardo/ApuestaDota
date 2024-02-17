@@ -1,19 +1,48 @@
 import React, { useState } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    StyleSheet,
-    Image,
-    TouchableOpacity,
-    ScrollView,
-} from 'react-native';
+import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import { Square } from '../components/Square';
 
-interface Props { }
+// Simulación del componente Square (ajusta según tu implementación)
+interface Square {
+    title: string;
+    subtitle: string;
+    cuota: string;
+    recompensa: string;
+    image: NodeRequire; // Para imágenes estáticas importadas
+}
 
-const RealList: React.FC<Props> = () => {
+const squares: Square[] = [
+    {
+        title: 'Ganar la siguiente partida clasificatoria',
+        subtitle: 'Juega con tu héroe favorito',
+        cuota: '1.40',
+        recompensa: '...',
+        image: require('../images/ganarsiguiente.png'), // Asegúrate de que las rutas de las imágenes sean correctas
+    },
+    {
+        title: 'Ganar con 0 muertes',
+        subtitle: 'Juega con tu héroe favorito pero no mueras',
+        cuota: '2.50',
+        recompensa: '...',
+        image: require('../images/ganar2.png'),
+    },
+    {
+        title: 'Desafío Support',
+        subtitle: 'Ganar con Crystal Maiden, Disruptor, Io, Oracle o Enigma',
+        cuota: '1.42',
+        recompensa: '...',
+        image: require('../images/ganar3.png'),
+    },
+    {
+        title: 'Desafío Tanque',
+        subtitle: 'Ganar con Pudge, Tiny, Treant Timbersaw o Beastmaster',
+        cuota: '1.42',
+        recompensa: '...',
+        image: require('../images/ganar4.png'),
+    },
+];
+
+const RealList: React.FC = () => {
     const [searchText, setSearchText] = useState<string>('');
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [saldoDisponible, setSaldoDisponible] = useState<number>(100);
@@ -26,39 +55,8 @@ const RealList: React.FC<Props> = () => {
     };
 
     const toggleCheckbox = (index: number): void => {
-        setSelectedIndex((prevIndex) => (prevIndex === index ? null : index));
+        setSelectedIndex(prevIndex => (prevIndex === index ? null : index));
     };
-
-    const squares: Square[] = [
-        {
-            title: 'Ganar la siguiente partida clasificatoria',
-            subtitle: 'Juega con tu héroe favorito',
-            cuota: '1.40',
-            recompensa: searchText !== '' ? (parseFloat(searchText) * 1.4).toFixed(2) : '...',
-            image: require('../images/ganarsiguiente.png'),
-        },
-        {
-            title: 'Ganar con 0 muertes',
-            subtitle: 'Juega con tu héroe favorito pero no mueras',
-            cuota: '2.50',
-            recompensa: searchText !== '' ? (parseFloat(searchText) * 2.5).toFixed(2) : '...',
-            image: require('../images/ganar2.png'),
-        },
-        {
-            title: 'Desafío Support',
-            subtitle: 'Ganar con Crystal Maiden, Disruptor, Io, Oracle o Enigma',
-            cuota: '1.42',
-            recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
-            image: require('../images/ganar3.png'),
-        },
-        {
-            title: 'Desafío Tanque',
-            subtitle: 'Ganar con Pudge, Tiny, Treant Timbersaw o Beastmaster',
-            cuota: '1.42',
-            recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
-            image: require('../images/ganar4.png'),
-        },
-    ];
 
     const renderSquare = ({ item, index }: { item: Square; index: number }): JSX.Element => (
         <View style={styles.square}>
@@ -67,7 +65,7 @@ const RealList: React.FC<Props> = () => {
             </TouchableOpacity>
             <Text style={styles.checkboxText}>
                 <Text style={styles.boldText}>{item.title}</Text>{'\n\n'}
-                {item.subtitle ? <Text style={styles.describirText}>{item.subtitle}</Text> : null}
+                {item.subtitle && <Text style={styles.describirText}>{item.subtitle}</Text>}
                 {'\n\n'}
                 <Text style={styles.yellowText}>Cuota:</Text>
                 <Text style={styles.greenText}> x {item.cuota}</Text>
