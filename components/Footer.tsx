@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         backgroundColor: "transparent",
-        borderTopColor: "#15425F",
-        borderWidth: 2,
+        borderTopColor: "#B6FF40",
+        borderWidth: 1,
     },
     headerText: {
         fontSize: 16,

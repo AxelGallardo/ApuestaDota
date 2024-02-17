@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 0,
     paddingTop: 10,
  
   },
@@ -74,7 +74,7 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     alignSelf: 'center',
     marginTop: 50,
-    marginBottom: 40,
+    marginBottom: 10,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -120,7 +120,7 @@ export const styles = StyleSheet.create({
   },
   describirText: {
     color: '#B3B3B3',
-    fontSize: 14,
+    fontSize: 12,
   },
   buttonContainer: {
     marginBottom: 60,
@@ -198,20 +198,15 @@ export const styles = StyleSheet.create({
 // Agrega esto a tu archivo RealListStyles.ts
 outerContainer: {
     flex: 1, // Esto asegura que el contenedor use todo el espacio disponible
+    paddingRight: 0,
+    marginRight: 0,
   },
-  fixedImage: {
-    position: 'absolute', // Posiciona la imagen de forma absoluta
-    right: 20, // A 100 píxeles del borde derecho
-    bottom: 20, // A 200 píxeles del borde inferior
-    width: 50, // Ancho de la imagen
-    height: 50, // Alto de la imagen
-  },
-
+ 
 
   whatsAppIconContainer: {
     position: 'absolute',
-    right: 20, // A 100 píxeles del borde derecho de la pantalla
-    bottom: 20, // A 200 píxeles del borde inferior de la pantalla
+    right: 10, // A 100 píxeles del borde derecho de la pantalla
+    bottom: 100, // A 200 píxeles del borde inferior de la pantalla
     width: 50, // Ancho del contenedor, ajusta según el tamaño de tu imagen
     height: 50, // Alto del contenedor, ajusta según el tamaño de tu imagen
     justifyContent: 'center',
@@ -222,6 +217,27 @@ outerContainer: {
     width: 50, // Ancho de la imagen de WhatsApp
     height: 50, // Alto de la imagen de WhatsApp
   },
+
+
+
+  chatIconContainer: {
+    position: 'absolute',
+    right: 10, // A 100 píxeles del borde derecho de la pantalla
+    bottom: 30, // A 200 píxeles del borde inferior de la pantalla
+    width: 50, // Ancho del contenedor, ajusta según el tamaño de tu imagen
+    height: 50, // Alto del contenedor, ajusta según el tamaño de tu imagen
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  
+  chatIcon: {
+    width: 50, // Ancho de la imagen de WhatsApp
+    height: 50, // Alto de la imagen de WhatsApp
+  },
+
+
+
+
 
 
   
