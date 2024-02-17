@@ -157,12 +157,16 @@ const RealList: React.FC<Props> = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 10,
+        paddingHorizontal: 0,
         paddingTop: 10,
     },
     searchContainer: {
         marginBottom: 10,
         marginTop: 10,
+        width: 300,
+        alignSelf: 'center',
+
+
     },
     searchInputContainer: {
         flexDirection: 'row',
