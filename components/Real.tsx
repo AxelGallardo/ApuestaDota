@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     ScrollView,
 } from 'react-native';
-import Carousel, { CarouselProps } from 'react-native-snap-carousel';
+import Carousel from 'react-native-snap-carousel';
 import { Square } from '../components/Square';
 
 interface Props { }
@@ -16,6 +16,7 @@ interface Props { }
 const RealList: React.FC<Props> = () => {
     const [searchText, setSearchText] = useState<string>('');
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [saldoDisponible, setSaldoDisponible] = useState<number>(100);
 
     const handleInputChange = (text: string): void => {
         const regex: RegExp = /^[0-9]*(\.[0-9]{0,2})?$/;
@@ -25,7 +26,7 @@ const RealList: React.FC<Props> = () => {
     };
 
     const toggleCheckbox = (index: number): void => {
-        setSelectedIndex(prevIndex => prevIndex === index ? null : index);
+        setSelectedIndex((prevIndex) => (prevIndex === index ? null : index));
     };
 
     const squares: Square[] = [
@@ -34,38 +35,35 @@ const RealList: React.FC<Props> = () => {
             subtitle: 'Juega con tu héroe favorito',
             cuota: '1.40',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 1.4).toFixed(2) : '...',
-            image: require('../images/ganarsiguiente.png')
+            image: require('../images/ganarsiguiente.png'),
         },
         {
             title: 'Ganar con 0 muertes',
-            subtitle: 'Juega con tu héroe favorito \npero no mueras',
+            subtitle: 'Juega con tu héroe favorito pero no mueras',
             cuota: '2.50',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 2.5).toFixed(2) : '...',
-            image: require('../images/ganar2.png')
+            image: require('../images/ganar2.png'),
         },
         {
             title: 'Desafío Support',
-            subtitle: 'Ganar con Crystal Maiden, \nDisruptor, Io, Oracle o Enigma',
+            subtitle: 'Ganar con Crystal Maiden, Disruptor, Io, Oracle o Enigma',
             cuota: '1.42',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
-            image: require('../images/ganar3.png')
+            image: require('../images/ganar3.png'),
         },
         {
             title: 'Desafío Tanque',
-            subtitle: 'Ganar con Pudge, Tiny, Treant\nTimbersaw o Beastmaster',
+            subtitle: 'Ganar con Pudge, Tiny, Treant Timbersaw o Beastmaster',
             cuota: '1.42',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 1.42).toFixed(2) : '...',
-            image: require('../images/ganar4.png')
+            image: require('../images/ganar4.png'),
         },
     ];
 
     const renderSquare = ({ item, index }: { item: Square; index: number }): JSX.Element => (
         <View style={styles.square}>
             <TouchableOpacity onPress={() => toggleCheckbox(index)} style={[styles.checkbox, selectedIndex === index && styles.checked]}>
-                <Image
-                    source={item.image}
-                    style={styles.checkboxImage}
-                />
+                <Image source={item.image} style={styles.checkboxImage} />
             </TouchableOpacity>
             <Text style={styles.checkboxText}>
                 <Text style={styles.boldText}>{item.title}</Text>{'\n\n'}
@@ -82,10 +80,7 @@ const RealList: React.FC<Props> = () => {
         <ScrollView style={styles.container}>
             <View style={styles.searchContainer}>
                 <View style={styles.searchInputContainer}>
-                    <Image
-                        source={require('../images/moneda.png')}
-                        style={styles.searchIcon}
-                    />
+                    <Image source={require('../images/moneda.png')} style={styles.searchIcon} />
                     <TextInput
                         style={styles.searchInput}
                         value={searchText}
@@ -98,6 +93,12 @@ const RealList: React.FC<Props> = () => {
                 <Text style={styles.instructions}>
                     El monto de apuesta es de 1 a 50 soles
                 </Text>
+                <View style={styles.saldoDisponibleContainer}>
+                    <Image source={require('../images/recargar.png')} style={styles.recargarIcon} />
+                    <Text style={styles.saldoDisponibleText}>
+                        Saldo disponible: S/. {saldoDisponible.toFixed(2)}
+                    </Text>
+                </View>
             </View>
 
             <Carousel
@@ -110,7 +111,7 @@ const RealList: React.FC<Props> = () => {
             />
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={() => console.log("Apostar")} style={[styles.button, { backgroundColor: '#B6FF40' }]}>
+                <TouchableOpacity onPress={() => console.log("Apostar")} style={styles.button}>
                     <Text style={styles.buttonText}>Apostar</Text>
                 </TouchableOpacity>
             </View>
@@ -157,16 +158,12 @@ const RealList: React.FC<Props> = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 0,
+        paddingHorizontal: 10,
         paddingTop: 10,
     },
     searchContainer: {
         marginBottom: 10,
         marginTop: 10,
-        width: 300,
-        alignSelf: 'center',
-
-
     },
     searchInputContainer: {
         flexDirection: 'row',
@@ -179,6 +176,8 @@ const styles = StyleSheet.create({
         height: 50,
         borderColor: '#B6FF40',
         borderWidth: 2,
+        alignSelf: 'center',
+        width: '80%',
     },
     searchIcon: {
         width: 20,
@@ -190,13 +189,46 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 16,
     },
+    instructions: {
+        color: 'white',
+        marginTop: 10,
+        marginBottom: 50,
+        textAlign: 'center',
+    },
+    saldoDisponibleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#292948',
+        borderRadius: 20,
+        paddingHorizontal: 15,
+        marginRight: 10,
+        marginLeft: 10,
+        height: 50,
+        borderColor: '#B6FF40',
+        borderWidth: 1,
+        alignSelf: 'center',
+        width: '80%',
+    },
+
+    recargarIcon: {
+        width: 20, // Ajusta estos valores según el tamaño deseado del ícono
+        height: 20, // Ajusta estos valores según el tamaño deseado del ícono
+        marginRight: 10, // Espacio entre el ícono y el texto
+    },
+
+    saldoDisponibleText: {
+        color: 'white',
+        fontSize: 16,
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
     square: {
         backgroundColor: '#1F1F37',
         borderRadius: 20,
         borderColor: '#1F1F37',
         borderWidth: 2,
         alignSelf: 'center',
-        marginTop: 20,
+        marginTop: 50,
         marginBottom: 40,
         padding: 10,
         flexDirection: 'row',
@@ -223,10 +255,6 @@ const styles = StyleSheet.create({
     checked: {
         backgroundColor: '#B6FF40',
     },
-    checkmark: {
-        color: 'black',
-        fontSize: 18,
-    },
     checkboxText: {
         color: 'white',
         fontSize: 16,
@@ -249,21 +277,11 @@ const styles = StyleSheet.create({
         color: '#B3B3B3',
         fontSize: 14,
     },
-    instructions: {
-        color: 'white',
-        marginTop: 10,
-        marginBottom: 50,
-        textAlign: 'center',
-    },
     buttonContainer: {
         marginBottom: 60,
         marginTop: 50,
-        alignItems: 'center', // Centra el botón horizontalmente
-        width: '100%', // Ajusta el ancho del contenedor del botón
-        color: 'black', // Define el color del texto como negro 0000.00
-    },
-    apostarButton: {
-        color: 'black', // Define el color del texto como negro
+        alignItems: 'center',
+        width: '100%',
     },
     button: {
         width: 200,
@@ -271,9 +289,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
+        backgroundColor: '#B6FF40',
     },
     buttonText: {
-        color: 'black', // Color del texto
+        color: 'black',
         fontSize: 18,
         fontWeight: 'bold',
     },
