@@ -21,7 +21,7 @@ const Footer = ({ changeContent }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.headerText}>Elige el tipo de apuesta</Text>
+            <Text style={styles.headerText}>Elige el tipo de apuesta...</Text>
             <View style={styles.footer}>
                 <Button name="Real" label="Real" />
                 <Button name="Practica" label="Práctica" />
@@ -35,12 +35,12 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         backgroundColor: "transparent",
-        borderTopColor: "#B6FF40",
-        borderWidth: 1,
+        borderTopColor: "#06B9C9",
+        borderWidth: 0.5,
     },
     headerText: {
         fontSize: 16,
-        color: '#FFD700', // Oro para un toque cyberpunk
+        color: '#C7FCF1', // Oro para un toque cyberpunk
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 10,
@@ -52,16 +52,16 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 100,
-        height: 65,
+        height: 50,
         borderRadius: 15,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#1A1A40', // Fondo oscuro para un look futurista
+        backgroundColor: '#000000', // Fondo oscuro para un look futurista
         borderWidth: 2,
-        borderColor: '#FFD700', // Bordes oro para contraste
+        borderColor: 'transparent', // Bordes oro para contraste
     },
     selectedButton: {
-        backgroundColor: '#B6FF40', // Naranja intenso para el botón seleccionado, vibrante cyberpunk
+        backgroundColor: '#B6FF39', // Naranja intenso para el botón seleccionado, vibrante cyberpunk
     },
     buttonText: {
         color: '#FFFFFF', // Texto blanco para contraste

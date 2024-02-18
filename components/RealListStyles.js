@@ -8,6 +8,17 @@ export const styles = StyleSheet.create({
     paddingTop: 10,
  
   },
+
+  containerPractica: {
+    flex: 1,
+    paddingHorizontal: 0,
+    paddingTop: 10,
+    
+ 
+  },
+
+
+
   searchContainer: {
     marginBottom: 10,
     marginTop: 10,
@@ -21,8 +32,8 @@ export const styles = StyleSheet.create({
     marginRight: 10,
     marginLeft: 10,
     height: 50,
-    borderColor: '#B6FF40',
-    borderWidth: 2,
+    borderColor: '#06B9C9',
+    borderWidth: 1,
     alignSelf: 'center',
     width: '80%',
   },
@@ -45,13 +56,13 @@ export const styles = StyleSheet.create({
   saldoDisponibleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#292948',
+    backgroundColor: '#0E3F46',
     borderRadius: 20,
     paddingHorizontal: 15,
     marginRight: 10,
     marginLeft: 10,
     height: 50,
-    borderColor: '#B6FF40',
+    borderColor: 'transparent',
     borderWidth: 1,
     alignSelf: 'center',
     width: '80%',
@@ -68,9 +79,9 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   square: {
-    backgroundColor: '#1F1F37',
+    backgroundColor: '#0A7D87',
     borderRadius: 20,
-    borderColor: '#1F1F37',
+    borderColor: '#0A7D87',
     borderWidth: 2,
     alignSelf: 'center',
     marginTop: 50,
@@ -119,7 +130,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   describirText: {
-    color: '#B3B3B3',
+    color: '#CCCCCC',
     fontSize: 12,
   },
   buttonContainer: {
@@ -134,7 +145,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    backgroundColor: '#B6FF40',
+    backgroundColor: '#61FF79',
   },
   buttonText: {
     color: 'black',
@@ -146,10 +157,10 @@ export const styles = StyleSheet.create({
     marginBottom: 30,
     width: 320,
     minHeight: 50,
-    backgroundColor: '#1C1C38',
+    backgroundColor: '#0E3F46',
     alignSelf: 'center',
     borderRadius: 15,
-    borderColor: '#B6FF40',
+    borderColor: 'transparent',
     borderWidth: 2,
     justifyContent: 'center',
   },
@@ -163,8 +174,8 @@ export const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 30,
     width: 350,
-    height: 500,
-    backgroundColor: '#1C1C38',
+    height: 550,
+    backgroundColor: '#0E3F46',
     alignSelf: 'center',
     borderRadius: 15,
   },
@@ -202,6 +213,13 @@ outerContainer: {
     marginRight: 0,
   },
  
+  outerContainerPractica: {
+    flex: 1, // Esto asegura que el contenedor use todo el espacio disponible
+    paddingRight: 0,
+    marginRight: 0,
+  },
+
+
 
   whatsAppIconContainer: {
     position: 'absolute',
@@ -236,7 +254,49 @@ outerContainer: {
   },
 
 
-
+  salaApuestasContainer: {
+    marginVertical: 20,
+    paddingHorizontal: 20,
+},
+salaApuestasTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FFF',
+    marginBottom: 10,
+},
+salaApuestasItem: {
+    backgroundColor: '#2C3E50',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 10,
+},
+salaApuestasItemTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#FFF',
+},
+salaApuestasItemDescription: {
+    fontSize: 14,
+    color: '#FFF',
+    marginBottom: 5,
+},
+salaApuestasItemCuota: {
+    fontSize: 14,
+    color: '#FFD700', // Amarillo
+    marginBottom: 5,
+},
+unirseButton: {
+    backgroundColor: '#3498DB', // Azul
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 10,
+},
+unirseButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#FFF',
+},
 
 
 

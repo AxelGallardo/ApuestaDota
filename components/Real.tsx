@@ -12,6 +12,7 @@ import Carousel from 'react-native-snap-carousel';
 import { Square } from '../components/Square';
 import { styles } from '../components/RealListStyles';
 import { Linking } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface Props { }
 
@@ -33,7 +34,7 @@ const RealList: React.FC<Props> = () => {
 
     const squares: Square[] = [
         {
-            title: 'Ganar la siguiente partida clasificatoria',
+            title: 'Ganar la siguiente \npartida clasificatoria',
             subtitle: 'Juega con tus héroes favoritos',
             cuota: '1.40',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 1.4).toFixed(2) : '...',
@@ -41,7 +42,7 @@ const RealList: React.FC<Props> = () => {
         },
         {
             title: 'Ganar con 0 muertes',
-            subtitle: 'Juega con tu héroe favorito pero \nno mueras',
+            subtitle: 'Juega con tu héroe favorito \npero no mueras',
             cuota: '2.50',
             recompensa: searchText !== '' ? (parseFloat(searchText) * 2.5).toFixed(2) : '...',
             image: require('../images/ganar2.png'),
@@ -85,98 +86,106 @@ const RealList: React.FC<Props> = () => {
     };
 
     return (
-        <View style={styles.outerContainer}>
-            <ScrollView style={styles.container}>
-                <View style={styles.searchContainer}>
-                    <View style={styles.searchInputContainer}>
-                        <Image source={require('../images/moneda.png')} style={styles.searchIcon} />
-                        <TextInput
-                            style={styles.searchInput}
-                            value={searchText}
-                            onChangeText={handleInputChange}
-                            placeholder="Ingresa el monto a apostar..."
-                            placeholderTextColor="white"
-                            keyboardType="numeric"
-                        />
+
+        <LinearGradient
+            colors={['#0A1D21', '#61FF79', '#0A1D21']}
+            style={styles.container}>
+
+
+
+            <View style={styles.outerContainer}>
+                <ScrollView style={styles.container}>
+                    <View style={styles.searchContainer}>
+                        <View style={styles.searchInputContainer}>
+                            <Image source={require('../images/moneda.png')} style={styles.searchIcon} />
+                            <TextInput
+                                style={styles.searchInput}
+                                value={searchText}
+                                onChangeText={handleInputChange}
+                                placeholder="Ingresa el monto a apostar..."
+                                placeholderTextColor="white"
+                                keyboardType="numeric"
+                            />
+                        </View>
+                        <Text style={styles.instructions}>
+                            El monto de apuesta es de 1 a 50 soles
+                        </Text>
+                        <View style={styles.saldoDisponibleContainer}>
+                            <Image source={require('../images/recargar.png')} style={styles.recargarIcon} />
+                            <Text style={styles.saldoDisponibleText}>
+                                Saldo disponible: S/. {saldoDisponible.toFixed(2)}
+                            </Text>
+                        </View>
                     </View>
-                    <Text style={styles.instructions}>
-                        El monto de apuesta es de 1 a 50 soles
-                    </Text>
-                    <View style={styles.saldoDisponibleContainer}>
-                        <Image source={require('../images/recargar.png')} style={styles.recargarIcon} />
-                        <Text style={styles.saldoDisponibleText}>
-                            Saldo disponible: S/. {saldoDisponible.toFixed(2)}
+
+                    <Carousel
+                        data={squares}
+                        renderItem={renderSquare}
+                        sliderWidth={400}
+                        itemWidth={320}
+                        layout="default"
+                        loop={true}
+                    />
+
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity onPress={() => console.log("Apostar")} style={styles.button}>
+                            <Text style={styles.buttonText}>Apostar</Text>
+                        </TouchableOpacity>
+                    </View>
+
+
+                    <View style={styles.apuestasRealizadas}>
+                        <Text style={styles.apuestasRealizadasTitle}>APUESTAS REALIZADAS</Text>
+
+
+                    </View>
+
+                    <View style={styles.apuestasRealizadas}>
+                        <Text style={styles.apuestasRealizadasTitle}>APUESTAS DE LA COMUNIDAD</Text>
+
+
+                    </View>
+
+
+                    <View style={styles.rectangle}>
+                        <Text style={styles.rectangleTitle}>REGLAS DEL JUEGO{'\n'}</Text>
+                        <Text style={styles.rectangleSubtitle}>ANTES DE APOSTAR:</Text>
+                        <Text style={styles.rectangleText}>
+
+                            Recuerda, poner primero la apuesta y después buscar la partida clasificatoria.{'\n'}{'\n'}
+
+                            No se tolerará cuentas <Text style={styles.greenTextReglas}>“smurf”</Text> o <Text style={styles.greenTextReglas}>“boosters”</Text> en el juego, evita que tu cuenta sea deshabilitada para siempre y juega con tu cuenta y medalla real.{'\n'}{'\n'}
+
+                            Las partidas de ranked grupal <Text style={styles.greenTextReglas}>NO</Text> están permitidas, si lo haces tu partida será identificada y serás penalizado.{'\n'}{'\n'}
+
+                            Una vez ejecutada la apuesta tienes <Text style={styles.greenTextReglas}>25 minutos para empezar a jugar </Text>en modo clasificatoria.{'\n'}{'\n'}
+
+                            No está permitido utilizar cuentas secundarias para ingresar a partidas repletas de novatos abusando de jugadores que recién empiezan. {'\n'}{'\n'}
+                        </Text>
+                        <Text style={styles.rectangleSubtitle}>APUESTA POR MEDALLA:</Text>
+                        <Text style={styles.rectangleText}>Hasta Guardián, monto máximo de apuesta es de 10 soles.
+                            {'\n'}{'\n'}Desde Cruzado, monto máximo de apuesta es de 50 soles.{'\n'}{'\n'}
                         </Text>
                     </View>
-                </View>
 
-                <Carousel
-                    data={squares}
-                    renderItem={renderSquare}
-                    sliderWidth={400}
-                    itemWidth={320}
-                    layout="default"
-                    loop={true}
-                />
+                </ScrollView>
+                <TouchableOpacity onPress={openWhatsApp} style={styles.whatsAppIconContainer}>
+                    <Image
+                        source={require('../images/whatsapp.png')} // Asegúrate de que la ruta a la imagen es correcta
+                        style={styles.whatsAppIcon}
+                    />
+                </TouchableOpacity>
 
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => console.log("Apostar")} style={styles.button}>
-                        <Text style={styles.buttonText}>Apostar</Text>
-                    </TouchableOpacity>
-                </View>
-
-
-                <View style={styles.apuestasRealizadas}>
-                    <Text style={styles.apuestasRealizadasTitle}>APUESTAS REALIZADAS</Text>
+                <TouchableOpacity onPress={openWhatsApp} style={styles.chatIconContainer}>
+                    <Image
+                        source={require('../images/chat.png')} // Asegúrate de que la ruta a la imagen es correcta
+                        style={styles.chatIcon}
+                    />
+                </TouchableOpacity>
 
 
-                </View>
-
-                <View style={styles.apuestasRealizadas}>
-                    <Text style={styles.apuestasRealizadasTitle}>APUESTAS DE LA COMUNIDAD</Text>
-
-
-                </View>
-
-
-                <View style={styles.rectangle}>
-                    <Text style={styles.rectangleTitle}>REGLAS DEL JUEGO{'\n'}</Text>
-                    <Text style={styles.rectangleSubtitle}>ANTES DE APOSTAR:</Text>
-                    <Text style={styles.rectangleText}>
-
-                        Recuerda, poner primero la apuesta y después buscar la partida clasificatoria.{'\n'}{'\n'}
-
-                        No se tolerará cuentas <Text style={styles.greenTextReglas}>“smurf”</Text> o <Text style={styles.greenTextReglas}>“boosters”</Text> en el juego, evita que tu cuenta sea deshabilitada para siempre y juega con tu cuenta y medalla real.{'\n'}{'\n'}
-
-                        Las partidas de ranked grupal <Text style={styles.greenTextReglas}>NO</Text> están permitidas, si lo haces tu partida será identificada y serás penalizado.{'\n'}{'\n'}
-
-                        Una vez ejecutada la apuesta tienes <Text style={styles.greenTextReglas}>25 minutos para empezar a jugar </Text>en modo clasificatoria.{'\n'}{'\n'}
-
-                        No está permitido utilizar cuentas secundarias para ingresar a partidas repletas de novatos abusando de jugadores que recién empiezan. {'\n'}{'\n'}
-                    </Text>
-                    <Text style={styles.rectangleSubtitle}>APUESTA POR MEDALLA:</Text>
-                    <Text style={styles.rectangleText}>Hasta Guardián, monto máximo de apuesta es de 10 soles.
-                        {'\n'}{'\n'}Desde Cruzado, monto máximo de apuesta es de 50 soles.{'\n'}{'\n'}
-                    </Text>
-                </View>
-
-            </ScrollView>
-            <TouchableOpacity onPress={openWhatsApp} style={styles.whatsAppIconContainer}>
-                <Image
-                    source={require('../images/whatsapp.png')} // Asegúrate de que la ruta a la imagen es correcta
-                    style={styles.whatsAppIcon}
-                />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={openWhatsApp} style={styles.chatIconContainer}>
-                <Image
-                    source={require('../images/chat.png')} // Asegúrate de que la ruta a la imagen es correcta
-                    style={styles.chatIcon}
-                />
-            </TouchableOpacity>
-
-
-        </View>
+            </View>
+        </LinearGradient>
     );
 };
 
