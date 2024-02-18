@@ -17,9 +17,11 @@ interface Props { }
 
 interface SalaApuestas {
     id: number;
-    nombre: string;
-    descripcion: string;
-    cuota: number;
+    numero: string;
+    costoEntrada: number;
+    ganancia: number;
+    host: string;
+    cantidadParticipantes: number;
 }
 
 const Versus: React.FC<Props> = () => {
@@ -36,14 +38,15 @@ const Versus: React.FC<Props> = () => {
     };
 
     const salasApuestas: SalaApuestas[] = [
-        { id: 1, nombre: 'Sala 1', descripcion: 'Descripción de la sala 1', cuota: 2.0 },
-        { id: 2, nombre: 'Sala 2', descripcion: 'Descripción de la sala 2', cuota: 1.5 },
+        { id: 1, numero: 'Sala 1', costoEntrada: 10.0, ganancia: 20.0, host: 'Juan', cantidadParticipantes: 5 },
+        { id: 2, numero: 'Sala 2', costoEntrada: 15.0, ganancia: 25.0, host: 'Pedro', cantidadParticipantes: 8 },
+        { id: 3, numero: 'Sala 3', costoEntrada: 20.0, ganancia: 30.0, host: 'María', cantidadParticipantes: 3 },
         // Agrega más salas si es necesario
     ];
 
     return (
         <LinearGradient
-            colors={['#0A1D21', '#61FF79', '#0A1D21']}
+            colors={['#0A1D21', '#19BF32', '#0A1D21']}
             style={styles.container}>
             <View style={styles.outerContainer}>
                 <ScrollView style={styles.container}>
@@ -69,9 +72,11 @@ const Versus: React.FC<Props> = () => {
                             <Text style={styles.salaApuestasTitle}>Salas de Apuestas</Text>
                             {salasApuestas.map((sala, index) => (
                                 <TouchableOpacity key={sala.id} style={styles.salaApuestasItem}>
-                                    <Text style={styles.salaApuestasItemTitle}>{sala.nombre}</Text>
-                                    <Text style={styles.salaApuestasItemDescription}>{sala.descripcion}</Text>
-                                    <Text style={styles.salaApuestasItemCuota}>Cuota: x{sala.cuota}</Text>
+                                    <Text style={styles.salaApuestasItemTitle}>Número de Sala: {sala.numero}</Text>
+                                    <Text style={styles.salaApuestasItemDescription}>Costo de Entrada: S/. {sala.costoEntrada}</Text>
+                                    <Text style={styles.salaApuestasItemDescription}>Ganancia: S/. {sala.ganancia}</Text>
+                                    <Text style={styles.salaApuestasItemDescription}>Nombre del Host: {sala.host}</Text>
+                                    <Text style={styles.salaApuestasItemDescription}>Cantidad de Participantes: {sala.cantidadParticipantes}</Text>
                                     <TouchableOpacity style={styles.unirseButton}>
                                         <Text style={styles.unirseButtonText}>Unirse</Text>
                                     </TouchableOpacity>

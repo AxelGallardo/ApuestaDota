@@ -286,7 +286,7 @@ salaApuestasItemCuota: {
     marginBottom: 5,
 },
 unirseButton: {
-    backgroundColor: '#3498DB', // Azul
+    backgroundColor: '#0A1D21', // Azul
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
@@ -295,7 +295,7 @@ unirseButton: {
 unirseButtonText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FFF',
+    color: '#B6FF40',
 },
 
 

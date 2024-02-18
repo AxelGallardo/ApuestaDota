@@ -88,7 +88,7 @@ const RealList: React.FC<Props> = () => {
     return (
 
         <LinearGradient
-            colors={['#0A1D21', '#61FF79', '#0A1D21']}
+            colors={['#0A1D21', '#19BF32', '#0A1D21']}
             style={styles.container}>
 
 
