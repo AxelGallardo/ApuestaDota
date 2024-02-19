@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#FFFFFF', // Texto blanco para contraste
+        color: '#CDEDE6', // Texto blanco para contraste
         marginBottom: 20,
     },
     input: {

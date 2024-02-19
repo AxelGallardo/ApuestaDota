@@ -1,34 +1,53 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Configuracion = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.containerText}>Configuración</Text>
-            {/* Aquí puedes agregar cualquier contenido relacionado con la configuración */}
+            <Text style={styles.title}>Configuración</Text>
+            <View style={styles.menuContainer}>
+                {['PERFIL', 'DEPÓSITO', 'RETIRO', 'TUTORIAL', 'TÉRMINOS Y CONDICIONES', 'INGRESAR'].map((item, index) => (
+                    <TouchableOpacity key={index} style={styles.menuItem}>
+                        <Text style={styles.menuItemText}>{item}</Text>
+                    </TouchableOpacity>
+                ))}
+            </View>
         </View>
     );
 };
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-
-        // Considera agregar un backgroundColor si es necesario para ocultar el contenido detrás
+        backgroundColor: '#0E0E10', // Un fondo oscuro para resaltar los colores fosforescentes
+        paddingTop: 60,
     },
-
-
-    containerText: {
-        color: '#fff', // Texto que contrasta con el botón
+    title: {
+        color: '#39FF14', // Un verde fosforescente para el título, muy llamativo
         fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 18,
+        fontSize: 24,
+        marginBottom: 20,
     },
-
-
-
-
+    menuContainer: {
+        width: '100%',
+    },
+    menuItem: {
+        backgroundColor: '#123524', // Un verde oscuro como base para los botones
+        padding: 15,
+        marginBottom: 10,
+        alignItems: 'center',
+        borderRadius: 15,
+        marginHorizontal: 20,
+        borderWidth: 2, // Un borde para darle un toque distintivo
+        borderColor: '#39FF14', // Verde fosforescente para el borde, haciendo juego con el título
+    },
+    menuItemText: {
+        color: '#CCFF00', // Un color verde-amarillo fosforescente para el texto, garantiza visibilidad
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
 });
 
 export default Configuracion;

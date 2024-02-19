@@ -267,7 +267,7 @@ outerContainer: {
 salaApuestasTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#FFF',
+    color: '#CDEDE6',
     marginBottom: 20,
     alignSelf: "center",
 },
