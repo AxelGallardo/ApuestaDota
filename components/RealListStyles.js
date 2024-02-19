@@ -180,7 +180,7 @@ export const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 30,
     width: 350,
-    height: 550,
+    height: 600,
     backgroundColor: '#0E3F46',
     alignSelf: 'center',
     borderRadius: 15,
