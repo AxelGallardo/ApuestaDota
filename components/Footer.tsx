@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     button: {
         width: 100,
         height: 50,
-        borderRadius: 15,
+        borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#000000', // Fondo oscuro para un look futurista
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         borderColor: 'transparent', // Bordes oro para contraste
     },
     selectedButton: {
-        backgroundColor: '#B6FF39', // Naranja intenso para el botón seleccionado, vibrante cyberpunk
+        backgroundColor: '#0C9610', // Naranja intenso para el botón seleccionado, vibrante cyberpunk
     },
     buttonText: {
         color: '#FFFFFF', // Texto blanco para contraste
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     selectedButtonText: {
-        color: '#000000', // Texto negro para resaltar sobre el naranja
+        color: '#fff', // Texto negro para resaltar sobre el naranja
     },
 });
 

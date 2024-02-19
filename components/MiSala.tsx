@@ -1,22 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
-
-// Se añade la prop onLeave a las props del componente
 const MiSala: React.FC<{ onLeave: () => void }> = ({ onLeave }) => {
     const players = Array.from({ length: 10 }, (_, index) => `Jugador ${index + 1}`);
 
-    const handleReady = () => {
-        // Lógica para cuando se presiona el botón de "Listo"
-    };
-
-    // Se modifica handleLeave para llamar a onLeave, que cambiará el componente mostrado
-    const handleLeave = () => {
-        onLeave(); // Esto notificará al componente padre para cambiar la vista
-    };
-
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.title}>Mi Sala</Text>
             <View style={styles.columnContainer}>
                 <View style={styles.column}>
@@ -37,19 +26,34 @@ const MiSala: React.FC<{ onLeave: () => void }> = ({ onLeave }) => {
                 </View>
             </View>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={handleReady}>
+                <TouchableOpacity style={styles.button} onPress={() => { }}>
                     <Text style={styles.buttonText}>Listo</Text>
                 </TouchableOpacity>
-                {/* Se usa la prop onLeave en el evento onPress del botón "Abandonar Sala" */}
-                <TouchableOpacity style={styles.buttonAbandonar} onPress={handleLeave}>
+                <TouchableOpacity style={styles.buttonAbandonar} onPress={onLeave}>
                     <Text style={styles.buttonText}>Abandonar Sala</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+            <View style={styles.detailsContainer}>
+                <Text style={styles.detailsTitle}>Detalles de la sala</Text>
+                <Text style={styles.detailsText}>Host: Admin</Text>
+                <Text style={styles.detailsText}>SteamID: 157748065</Text>
+                <Text style={styles.highlightedText}>Nombre de la sala: Nombre de la sala</Text>
+                <Text style={styles.highlightedText}>Contraseña de la sala: Contraseña de la sala</Text>
+                <Text style={styles.detailsInfo}>El host debe crear la sala con estas características mínimas o lo puedes reportar</Text>
+                <Text style={styles.detailsText}>Modo: Elección Libre</Text>
+                <Text style={styles.detailsText}>Espectadores: No</Text>
+                <Text style={styles.detailsText}>Servidor: Perú</Text>
+                <Text style={styles.detailsText}>Visibilidad de la sala: Pública</Text>
+                <Text style={styles.detailsText}>Trucos: Desactivados</Text>
+                <Text style={styles.detailsInfo}>Información adicional</Text>
+                <Text style={styles.detailsText}>Ingreso: S/ 11</Text>
+                <Text style={styles.detailsText}>Ganancia: S/ 20</Text>
+                <Text style={styles.detailsWarning}>No olvides reportar conducta ofensiva, emos, feeders o cualquier acción fraudulenta mediante un video enviado al ícono de Contacto.</Text>
+            </View>
+        </ScrollView>
     );
 };
 
-// Estilos permanecen sin cambios
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -136,7 +140,43 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         alignSelf: "center",
+    }, detailsContainer: {
+        backgroundColor: '#121212', // Fondo oscuro para los detalles
+        padding: 20,
+        borderRadius: 5,
+        margin: 10,
+        borderWidth: 1,
+        borderColor: '#2A9D8F', // Borde para destacar la sección
     },
+    detailsTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
+        marginBottom: 10,
+    },
+    detailsText: {
+        fontSize: 16,
+        color: '#BBBBBB',
+        marginBottom: 5,
+    },
+    detailsInfo: {
+        fontSize: 14,
+        color: '#AAAAAA',
+        fontStyle: 'italic',
+        marginBottom: 10,
+    },
+    detailsWarning: {
+        fontSize: 14,
+        color: '#E63946', // Rojo para advertencias
+        marginTop: 10,
+    },
+    highlightedText: {
+        fontSize: 16,
+        color: '#4CAF50', // Un color verde brillante para resaltar
+        fontWeight: 'bold', // Opcional: añadir negrita para mayor énfasis
+        marginBottom: 5,
+    },
+    // Asegúrate de ajustar o añadir estilos según sea necesario...
 });
 
 export default MiSala;

@@ -79,9 +79,9 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   square: {
-    backgroundColor: '#0A7D87',
+    backgroundColor: '#720A',
     borderRadius: 20,
-    borderColor: '#0A7D87',
+    borderColor: 'transparent',
     borderWidth: 2,
     alignSelf: 'center',
     marginTop: 50,
@@ -140,17 +140,23 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   button: {
-    width: 200,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-    backgroundColor: '#61FF79',
+    backgroundColor: '#61FF79', // Color principal del botón
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 25, // Bordes redondeados para un look moderno
+    shadowColor: '#0A1D21', // Sombra que combina con los colores del gradiente
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 5, // Elevación para Android
+    width: 300,
+    marginTop: -20,
   },
   buttonText: {
-    color: 'black',
-    fontSize: 18,
+    color: '#0A1D21', // Texto que contrasta con el botón
     fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 18,
   },
   apuestasRealizadas: {
     marginTop: 30,

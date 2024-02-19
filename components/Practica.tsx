@@ -87,7 +87,7 @@ const Practica: React.FC<Props> = () => {
 
     return (
         <LinearGradient
-            colors={['#061212', '#FF6633', '#061212']}
+            colors={['#0A1D21', '#C99916', '#0A1D21']}
             style={styles.container}>
 
 
