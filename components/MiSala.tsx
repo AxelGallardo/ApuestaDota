@@ -20,7 +20,7 @@ const MiSala: React.FC<{ onLeave: () => void }> = ({ onLeave }) => {
             <Text style={styles.title}>Mi Sala</Text>
             <View style={styles.columnContainer}>
                 <View style={styles.column}>
-                    <Text style={styles.columnTitle}>Radiant</Text>
+                    <Text style={styles.columnTitleRadiant}>Radiant</Text>
                     {players.slice(0, 5).map((player, index) => (
                         <View key={index} style={styles.playerSlot}>
                             <Text style={styles.playerName}>{player}</Text>
@@ -28,7 +28,7 @@ const MiSala: React.FC<{ onLeave: () => void }> = ({ onLeave }) => {
                     ))}
                 </View>
                 <View style={styles.column}>
-                    <Text style={styles.columnTitle}>Dire</Text>
+                    <Text style={styles.columnTitleDire}>Dire</Text>
                     {players.slice(5, 10).map((player, index) => (
                         <View key={index} style={styles.playerSlot}>
                             <Text style={styles.playerName}>{player}</Text>
@@ -41,7 +41,7 @@ const MiSala: React.FC<{ onLeave: () => void }> = ({ onLeave }) => {
                     <Text style={styles.buttonText}>Listo</Text>
                 </TouchableOpacity>
                 {/* Se usa la prop onLeave en el evento onPress del botón "Abandonar Sala" */}
-                <TouchableOpacity style={styles.button} onPress={handleLeave}>
+                <TouchableOpacity style={styles.buttonAbandonar} onPress={handleLeave}>
                     <Text style={styles.buttonText}>Abandonar Sala</Text>
                 </TouchableOpacity>
             </View>
@@ -73,16 +73,32 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
-    columnTitle: {
+    columnTitleRadiant: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
+        color: '#FFF',
+        // Aplicar sombra como "borde"
+        textShadowColor: 'blue', // Color verde para la sombra
+        textShadowOffset: { width: 0, height: -2 }, // Dirección de la sombra
+        textShadowRadius: 10, // Sin difuminado para simular un borde más definido
+    },
+
+    columnTitleDire: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: '#FFF',
+        // Aplicar sombra como "borde"
+        textShadowColor: 'red', // Color verde para la sombra
+        textShadowOffset: { width: 0, height: -2 }, // Dirección de la sombra
+        textShadowRadius: 10, // Sin difuminado para simular un borde más definido
     },
     playerSlot: {
-        width: '100%',
+        width: '90%',
         height: 50,
         marginBottom: 10,
-        backgroundColor: '#19BF32',
+        backgroundColor: '#1A1A1AD9',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5,
@@ -96,16 +112,30 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         width: '100%',
         marginTop: 20,
+        marginBottom: 50,
     },
     button: {
-        backgroundColor: '#0A1D21',
+        backgroundColor: '#6BA60D',
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
+        width: '40%',
     },
+
+    buttonAbandonar: {
+        backgroundColor: '#F73B2A',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        width: '40%',
+    },
+
+
+
     buttonText: {
         color: 'white',
         fontWeight: 'bold',
+        alignSelf: "center",
     },
 });
 
