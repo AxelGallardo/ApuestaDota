@@ -16,6 +16,8 @@ const App = () => {
 
   const changeContent = (selectedContent) => {
     setContent(selectedContent);
+    setIsSettingsVisible(false); // Asegura que la configuración se cierra
+    setIsInfoVisible(false); // Asegura que la información se cierra si está abierta
   };
   const toggleSettings = () => {
     setIsSettingsVisible(!isSettingsVisible);
@@ -54,7 +56,8 @@ const App = () => {
       <View style={styles.content}>
         {isSettingsVisible ? <Configuracion /> : isInfoVisible ? <Info /> : renderContent()}
       </View>
-      {!isSettingsVisible && !isInfoVisible && <Footer changeContent={changeContent} />}
+      {/* Siempre mostrar el Footer, independientemente de isSettingsVisible o isInfoVisible */}
+      <Footer changeContent={changeContent} />
     </LinearGradient>
   );
 };
