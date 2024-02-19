@@ -262,7 +262,8 @@ salaApuestasTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#FFF',
-    marginBottom: 10,
+    marginBottom: 20,
+    alignSelf: "center",
 },
 salaApuestasItem: {
     backgroundColor: '#2C3E50',

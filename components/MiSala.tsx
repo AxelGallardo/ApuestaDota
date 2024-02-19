@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
+
 // Se añade la prop onLeave a las props del componente
 const MiSala: React.FC<{ onLeave: () => void }> = ({ onLeave }) => {
     const players = Array.from({ length: 10 }, (_, index) => `Jugador ${index + 1}`);
@@ -56,9 +57,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     title: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: 'bold',
+        color: '#FFF',
         marginBottom: 20,
+        marginVertical: 20,
+        paddingHorizontal: 20,
+        alignSelf: "center",
     },
     columnContainer: {
         flexDirection: 'row',
