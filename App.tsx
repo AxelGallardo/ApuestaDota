@@ -6,16 +6,18 @@ import Footer from './components/Footer';
 import Real from './components/Real';
 import Practica from './components/Practica';
 import Versus from './components/Versus';
-
-
+import Configuracion from './components/Configuracion'; // Importa el componente de Configuracion
 
 const App = () => {
   const [content, setContent] = useState('Real');
+  const [isSettingsVisible, setIsSettingsVisible] = useState(false);
 
   const changeContent = (selectedContent) => {
     setContent(selectedContent);
   };
-
+  const toggleSettings = () => {
+    setIsSettingsVisible(!isSettingsVisible);
+  };
   const renderContent = () => {
     switch (content) {
       case 'Real':
@@ -23,7 +25,9 @@ const App = () => {
       case 'Practica':
         return <Practica />;
       case 'Versus':
-        return < Versus />;
+        return <Versus />;
+      case 'Configuracion': // Agrega un caso para renderizar el componente de configuración
+        return <Configuracion />;
       default:
         return null;
     }
@@ -33,11 +37,11 @@ const App = () => {
     <LinearGradient
       colors={['#0A1D21', '#0A1D21', '#0A1D21']}
       style={styles.container}>
-      <Header />
+      <Header onSettingsPress={toggleSettings} />
       <View style={styles.content}>
-        {renderContent()}
+        {isSettingsVisible ? <Configuracion /> : renderContent()}
       </View>
-      <Footer changeContent={changeContent} />
+      {!isSettingsVisible && <Footer changeContent={changeContent} />}
     </LinearGradient>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const Header = () => {
+const Header = ({ onSettingsPress }) => {
 
     const handleSettingsPress = () => {
         // Lógica para manejar el press del botón de configuración
@@ -13,6 +13,11 @@ const Header = () => {
         console.log('Botón de información presionado');
     };
 
+
+
+
+
+
     return (
         <View style={styles.header}>
             <View style={styles.olimpoContainer}>
@@ -23,9 +28,13 @@ const Header = () => {
                 <Image source={require('../images/informacion.png')} style={styles.infoIcon} />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={handleSettingsPress} style={styles.settingsButton}>
-                <Image source={require('../images/engranaje.png')} style={styles.settingsIcon} />
-            </TouchableOpacity>
+
+            <View style={styles.header}>
+                {/* Resto de tu JSX */}
+                <TouchableOpacity onPress={onSettingsPress} style={styles.settingsButton}>
+                    <Image source={require('../images/engranaje.png')} style={styles.settingsIcon} />
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
