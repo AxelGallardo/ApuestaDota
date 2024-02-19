@@ -28,9 +28,7 @@ interface SalaApuestas {
 const Versus: React.FC<Props> = () => {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [saldoDisponible, setSaldoDisponible] = useState<number>(100);
-    const [selectedComponent, setSelectedComponent] = useState<'SalasApuestas' | 'MiSala' | 'CrearSala'>(
-        'SalasApuestas'
-    );
+    const [selectedComponent, setSelectedComponent] = useState<'SalasApuestas' | 'MiSala' | 'CrearSala'>('SalasApuestas');
 
     const toggleCheckbox = (index: number): void => {
         setSelectedIndex((prevIndex) => (prevIndex === index ? null : index));
@@ -41,6 +39,10 @@ const Versus: React.FC<Props> = () => {
         Linking.openURL(url).catch(err => console.error('Error al abrir WhatsApp', err));
     };
 
+    const showSalasApuestas = () => {
+        setSelectedComponent('SalasApuestas');
+    };
+
     const salasApuestas: SalaApuestas[] = [
         { id: 1, numero: 'Sala 1', costoEntrada: 11.00, ganancia: 20.00, host: 'Juan', cantidadParticipantes: 5 },
         { id: 2, numero: 'Sala 2', costoEntrada: 4.40, ganancia: 8.00, host: 'Pedro', cantidadParticipantes: 8 },
@@ -48,52 +50,34 @@ const Versus: React.FC<Props> = () => {
     ];
 
     return (
-        <LinearGradient
-            colors={['#0A1D21', '#19BF32', '#0A1D21']}
-            style={styles.container}>
+        <LinearGradient colors={['#0A1D21', '#19BF32', '#0A1D21']} style={styles.container}>
             <View style={styles.outerContainer}>
                 <ScrollView style={styles.container}>
                     <View style={[styles.buttonContainer, { marginBottom: 20 }]}>
-                        <TouchableOpacity
-                            style={buttonStyles.button}
-                            onPress={() => setSelectedComponent('SalasApuestas')}
-                        >
+                        <TouchableOpacity style={buttonStyles.button} onPress={() => setSelectedComponent('SalasApuestas')}>
                             <Text style={buttonStyles.buttonText}>Salas</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity
-                            style={[buttonStyles.button, { marginTop: 10 }]}
-                            onPress={() => setSelectedComponent('MiSala')}
-                        >
+                        <TouchableOpacity style={[buttonStyles.button, { marginTop: 10 }]} onPress={() => setSelectedComponent('MiSala')}>
                             <Text style={buttonStyles.buttonText}>Mi Sala</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity
-                            style={[buttonStyles.button, { marginTop: 10 }]}
-                            onPress={() => setSelectedComponent('CrearSala')}
-                        >
+                        <TouchableOpacity style={[buttonStyles.button, { marginTop: 10 }]} onPress={() => setSelectedComponent('CrearSala')}>
                             <Text style={buttonStyles.buttonText}>Crear Sala</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.saldoDisponibleContainer}>
                         <Image source={require('../images/recargar.png')} style={styles.recargarIcon} />
-                        <Text style={styles.saldoDisponibleText}>
-                            Saldo disponible: S/. {saldoDisponible.toFixed(2)}
-                        </Text>
+                        <Text style={styles.saldoDisponibleText}>Saldo disponible: S/. {saldoDisponible.toFixed(2)}</Text>
                     </View>
                     {selectedComponent === 'SalasApuestas' && <SalasApuestas salasApuestas={salasApuestas} />}
-                    {selectedComponent === 'MiSala' && <MiSala />}
+                    {/* Se pasa la función showSalasApuestas como prop a MiSala */}
+                    {selectedComponent === 'MiSala' && <MiSala onLeave={showSalasApuestas} />}
                     {selectedComponent === 'CrearSala' && <CrearSala />}
                 </ScrollView>
                 <TouchableOpacity onPress={openWhatsApp} style={styles.whatsAppIconContainer}>
-                    <Image
-                        source={require('../images/whatsapp.png')}
-                        style={styles.whatsAppIcon}
-                    />
+                    <Image source={require('../images/whatsapp.png')} style={styles.whatsAppIcon} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={openWhatsApp} style={styles.chatIconContainer}>
-                    <Image
-                        source={require('../images/chat.png')}
-                        style={styles.chatIcon}
-                    />
+                    <Image source={require('../images/chat.png')} style={styles.chatIcon} />
                 </TouchableOpacity>
             </View>
         </LinearGradient>
