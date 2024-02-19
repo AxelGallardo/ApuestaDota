@@ -1,21 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const Header = ({ onSettingsPress }) => {
-
-    const handleSettingsPress = () => {
-        // Lógica para manejar el press del botón de configuración
-        console.log('Botón de configuración presionado');
-    };
-
-    const handleInfoPress = () => {
-        // Lógica para manejar el press del botón de información
-        console.log('Botón de información presionado');
-    };
-
-
-
-
+const Header = ({ onSettingsPress, onInfoPress }) => {
 
 
     return (
@@ -24,17 +10,13 @@ const Header = ({ onSettingsPress }) => {
                 <Image source={require('../images/apuestadota.png')} style={styles.headerImage} />
             </View>
 
-            <TouchableOpacity onPress={handleInfoPress} style={styles.infoButton}>
+
+            <TouchableOpacity onPress={onInfoPress} style={styles.infoButton}>
                 <Image source={require('../images/informacion.png')} style={styles.infoIcon} />
             </TouchableOpacity>
-
-
-            <View style={styles.header}>
-                {/* Resto de tu JSX */}
-                <TouchableOpacity onPress={onSettingsPress} style={styles.settingsButton}>
-                    <Image source={require('../images/engranaje.png')} style={styles.settingsIcon} />
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity onPress={onSettingsPress} style={styles.settingsButton}>
+                <Image source={require('../images/engranaje.png')} style={styles.settingsIcon} />
+            </TouchableOpacity>
         </View>
     );
 };

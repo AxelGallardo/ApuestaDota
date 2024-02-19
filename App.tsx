@@ -7,17 +7,28 @@ import Real from './components/Real';
 import Practica from './components/Practica';
 import Versus from './components/Versus';
 import Configuracion from './components/Configuracion'; // Importa el componente de Configuracion
+import Info from "./components/Info";
 
 const App = () => {
   const [content, setContent] = useState('Real');
   const [isSettingsVisible, setIsSettingsVisible] = useState(false);
+  const [isInfoVisible, setIsInfoVisible] = useState(false);
 
   const changeContent = (selectedContent) => {
     setContent(selectedContent);
   };
   const toggleSettings = () => {
     setIsSettingsVisible(!isSettingsVisible);
+    // Asegurarse de ocultar la información si está visible
+    if (isInfoVisible) setIsInfoVisible(false);
   };
+
+  const toggleInfo = () => {
+    setIsInfoVisible(!isInfoVisible);
+    // Asegurarse de ocultar configuración si está visible
+    if (isSettingsVisible) setIsSettingsVisible(false);
+  };
+
   const renderContent = () => {
     switch (content) {
       case 'Real':
@@ -28,6 +39,8 @@ const App = () => {
         return <Versus />;
       case 'Configuracion': // Agrega un caso para renderizar el componente de configuración
         return <Configuracion />;
+      case 'Infor': // Agrega un caso para renderizar el componente de configuración
+        return <Configuracion />;
       default:
         return null;
     }
@@ -37,11 +50,11 @@ const App = () => {
     <LinearGradient
       colors={['#0A1D21', '#0A1D21', '#0A1D21']}
       style={styles.container}>
-      <Header onSettingsPress={toggleSettings} />
+      <Header onSettingsPress={toggleSettings} onInfoPress={toggleInfo} />
       <View style={styles.content}>
-        {isSettingsVisible ? <Configuracion /> : renderContent()}
+        {isSettingsVisible ? <Configuracion /> : isInfoVisible ? <Info /> : renderContent()}
       </View>
-      {!isSettingsVisible && <Footer changeContent={changeContent} />}
+      {!isSettingsVisible && !isInfoVisible && <Footer changeContent={changeContent} />}
     </LinearGradient>
   );
 };
