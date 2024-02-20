@@ -42,7 +42,7 @@ const App = () => {
       case 'Configuracion': // Agrega un caso para renderizar el componente de configuración
         return <Configuracion />;
       case 'Infor': // Agrega un caso para renderizar el componente de configuración
-        return <Configuracion />;
+        return <Info />;
       default:
         return null;
     }

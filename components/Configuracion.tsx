@@ -1,17 +1,33 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native'; // Importa ScrollView
+import MenuComponent from './MenuComponent';
+import Perfil from './Perfil';
+import Deposito from './Deposito';
+import Retiro from './Retiro';
+import Tutorial from './Tutorial';
+import Terminos from './Terminos';
+import Ingresar from './Ingresar';
 
 const Configuracion = () => {
+    const [activeScreen, setActiveScreen] = useState('');
+
+    const handleSelectItem = (item) => {
+        setActiveScreen(item); // Actualiza la pantalla activa basado en el ítem seleccionado
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Configuración</Text>
-            <View style={styles.menuContainer}>
-                {['PERFIL', 'DEPÓSITO', 'RETIRO', 'TUTORIAL', 'TÉRMINOS Y CONDICIONES', 'INGRESAR'].map((item, index) => (
-                    <TouchableOpacity key={index} style={styles.menuItem}>
-                        <Text style={styles.menuItemText}>{item}</Text>
-                    </TouchableOpacity>
-                ))}
-            </View>
+            <MenuComponent onSelectItem={handleSelectItem} />
+            <ScrollView style={styles.scrollViewStyle}>
+                {activeScreen === 'PERFIL' ? <Perfil /> : null}
+                {activeScreen === 'DEPOSITO' ? <Deposito /> : null}
+                {activeScreen === 'RETIRO' ? <Retiro /> : null}
+                {activeScreen === 'TUTORIAL' ? <Tutorial /> : null}
+                {activeScreen === 'TERMINOS' ? <Terminos /> : null}
+                {activeScreen === 'INGRESAR' ? <Ingresar /> : null}
+                {/* Elimina el comentario para evitar errores */}
+            </ScrollView>
         </View>
     );
 };
@@ -22,31 +38,16 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#0E0E10', // Un fondo oscuro para resaltar los colores fosforescentes
-        paddingTop: 60,
+        paddingTop: 20,
     },
     title: {
         color: '#39FF14', // Un verde fosforescente para el título, muy llamativo
         fontWeight: 'bold',
-        fontSize: 24,
+        fontSize: 20,
         marginBottom: 20,
     },
-    menuContainer: {
-        width: '100%',
-    },
-    menuItem: {
-        backgroundColor: '#123524', // Un verde oscuro como base para los botones
-        padding: 15,
-        marginBottom: 10,
-        alignItems: 'center',
-        borderRadius: 15,
-        marginHorizontal: 20,
-        borderWidth: 2, // Un borde para darle un toque distintivo
-        borderColor: '#39FF14', // Verde fosforescente para el borde, haciendo juego con el título
-    },
-    menuItemText: {
-        color: '#CCFF00', // Un color verde-amarillo fosforescente para el texto, garantiza visibilidad
-        fontSize: 18,
-        fontWeight: 'bold',
+    scrollViewStyle: {
+        width: '100%', // Asegura que el ScrollView ocupe todo el ancho disponible
     },
 });
 

@@ -1,16 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Perfil = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Perfil del Usuario</Text>
-            {/* Aquí podrías cargar y mostrar información real del usuario */}
-            <View style={styles.infoContainer}>
-                <Text style={styles.infoText}>Nombre: Juan Pérez</Text>
-                <Text style={styles.infoText}>Correo: juan.perez@example.com</Text>
+            <Text style={styles.title}>Perfil</Text>
+            <View style={styles.profileInfo}>
+                <Text style={styles.label}>Nombre:</Text>
+                <Text style={styles.value}>Juan Pérez</Text>
             </View>
-            <Button title="Editar Perfil" onPress={() => console.log('Editar Perfil')} />
+            <View style={styles.profileInfo}>
+                <Text style={styles.label}>Correo electrónico:</Text>
+                <Text style={styles.value}>juan.perez@example.com</Text>
+            </View>
+            {/* Agrega más campos de perfil según sea necesario */}
         </View>
     );
 };
@@ -18,21 +21,26 @@ const Perfil = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#fff', // Color de fondo blanco
+        padding: 20,
     },
     title: {
-        fontSize: 22,
+        fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
     },
-    infoContainer: {
-        marginBottom: 20,
-    },
-    infoText: {
-        fontSize: 18,
+    profileInfo: {
+        flexDirection: 'row',
         marginBottom: 10,
+    },
+    label: {
+        fontWeight: 'bold',
+        marginRight: 10,
+    },
+    value: {
+        flex: 1,
     },
 });
 
