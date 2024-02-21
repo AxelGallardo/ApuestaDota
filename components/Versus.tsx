@@ -54,14 +54,35 @@ const Versus: React.FC<Props> = () => {
             <View style={styles.outerContainer}>
                 <ScrollView style={styles.container}>
                     <View style={[styles.buttonContainer, { marginBottom: 20 }]}>
-                        <TouchableOpacity style={buttonStyles.button} onPress={() => setSelectedComponent('SalasApuestas')}>
-                            <Text style={buttonStyles.buttonText}>Salas</Text>
+                        <TouchableOpacity
+                            style={[buttonStyles.button, selectedComponent === 'SalasApuestas' ? buttonStyles.selectedButton : {},]}
+                            onPress={() => setSelectedComponent('SalasApuestas')}
+                        >
+                            <Text
+                                style={[buttonStyles.buttonText, selectedComponent === 'SalasApuestas' ? styles.selectedButtonText : {}]}
+                            >
+                                SALAS
+                            </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[buttonStyles.button, { marginTop: 10 }]} onPress={() => setSelectedComponent('MiSala')}>
-                            <Text style={buttonStyles.buttonText}>Mi Sala</Text>
+                        <TouchableOpacity
+                            style={[buttonStyles.button, selectedComponent === 'MiSala' ? buttonStyles.selectedButton : {},]}
+                            onPress={() => setSelectedComponent('MiSala')}
+                        >
+                            <Text
+                                style={[buttonStyles.buttonText, selectedComponent === 'MiSala' ? styles.selectedButtonText : {}]}
+                            >
+                                MI SALA
+                            </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[buttonStyles.button, { marginTop: 10 }]} onPress={() => setSelectedComponent('CrearSala')}>
-                            <Text style={buttonStyles.buttonText}>Crear Sala</Text>
+                        <TouchableOpacity
+                            style={[buttonStyles.button, selectedComponent === 'CrearSala' ? buttonStyles.selectedButton : {},]}
+                            onPress={() => setSelectedComponent('CrearSala')}
+                        >
+                            <Text
+                                style={[buttonStyles.buttonText, selectedComponent === 'CrearSala' ? styles.selectedButtonText : {}]}
+                            >
+                                CREAR SALA
+                            </Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.saldoDisponibleContainer}>

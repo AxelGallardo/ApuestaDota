@@ -12,15 +12,29 @@ export const buttonStyles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5, // Elevación para Android
     width: 300,
-    marginTop: -50,
+    marginTop: 0,
+    marginBottom: 10,
+   
+    
   },
+
+  selectedButton: {
+    backgroundColor: '#39FF14', // Cambia el color de fondo cuando está seleccionado
+    marginBottom: 10,
+    
+    
+},
+
+
   buttonText: {
     color: '#0A1D21', // Texto que contrasta con el botón
     fontWeight: 'bold',
     textAlign: 'center',
   },
 
-
+  selectedButtonText: {
+    color: '#000000', // Cambia el color del texto a negro cuando está seleccionado
+},
 
 
 

@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     alignSelf: 'center',
     marginTop: 50,
-    marginBottom: 10,
+    marginBottom: 80,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -135,7 +135,7 @@ export const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginBottom: 60,
-    marginTop: 50,
+    marginTop: 0,
     alignItems: 'center',
     width: '100%',
   },
@@ -152,12 +152,17 @@ export const styles = StyleSheet.create({
     width: 300,
     marginTop: -20,
   },
+
+
+
   buttonText: {
     color: '#0A1D21', // Texto que contrasta con el botón
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 18,
   },
+
+
   apuestasRealizadas: {
     marginTop: 30,
     marginBottom: 30,

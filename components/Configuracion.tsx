@@ -17,9 +17,10 @@ const Configuracion = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Configuración</Text>
-            <MenuComponent onSelectItem={handleSelectItem} />
             <ScrollView style={styles.scrollViewStyle}>
+                <Text style={styles.title}>Configuración</Text>
+                <MenuComponent onSelectItem={handleSelectItem} />
+
                 {activeScreen === 'PERFIL' ? <Perfil /> : null}
                 {activeScreen === 'DEPOSITO' ? <Deposito /> : null}
                 {activeScreen === 'RETIRO' ? <Retiro /> : null}
@@ -45,6 +46,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         marginBottom: 20,
+        alignSelf: "center",
     },
     scrollViewStyle: {
         width: '100%', // Asegura que el ScrollView ocupe todo el ancho disponible
