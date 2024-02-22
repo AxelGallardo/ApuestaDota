@@ -19,47 +19,47 @@ const Ingresar = () => {
     };
 
     return (
-        <LinearGradient colors={['#0E0E10', '#203A43', '#2C5364']} style={styles.container}>
-            <ScrollView contentContainerStyle={styles.scrollView}>
-                <Text style={styles.title}>Iniciar sesión con Steam</Text>
 
-                {/* Modificación para el botón con degradado */}
-                <LinearGradient
-                    colors={['#00BBED', '#0072ff']} // Colores del degradado para el botón
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
-                    style={styles.loginButtonGradient}
+        <ScrollView contentContainerStyle={styles.scrollView}>
+            <Text style={styles.title}>Iniciar sesión con Steam</Text>
+
+            {/* Modificación para el botón con degradado */}
+            <LinearGradient
+                colors={['#00BBED', '#0072ff']} // Colores del degradado para el botón
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.loginButtonGradient}
+            >
+                <TouchableOpacity
+                    style={styles.loginButton}
+                    onPress={openAuthSession}
+                    disabled={isLoading}
+                    activeOpacity={0.8} // Ajusta este valor según prefieras
                 >
-                    <TouchableOpacity
-                        style={styles.loginButton}
-                        onPress={openAuthSession}
-                        disabled={isLoading}
-                        activeOpacity={0.8} // Ajusta este valor según prefieras
-                    >
-                        <Text style={styles.buttonText}>
-                            {isLoading ? 'Cargando...' : 'Iniciar Sesión'}
-                        </Text>
-                    </TouchableOpacity>
-                </LinearGradient>
-                {/* Fin de la modificación para el botón con degradado */}
-
-                <View style={styles.instructionsContainer}>
-                    <Text style={styles.instructionsTitle}>{"\n"}¿Cómo hacer que tu perfil de Steam público?</Text>
-                    <Text style={styles.instructionsText}>
-                        {"\n"}Recuerda tener en cuenta estos pasos para que puedas acceder con tu cuenta de Steam:  {"\n"}
+                    <Text style={styles.buttonText}>
+                        {isLoading ? 'Cargando...' : 'Iniciar Sesión'}
                     </Text>
-                    <Text style={styles.instructionsList}>
+                </TouchableOpacity>
+            </LinearGradient>
+            {/* Fin de la modificación para el botón con degradado */}
 
-                        - Abrir Steam{"\n"}
-                        - Ve a tu página de perfil{"\n"}
-                        - Haga clic en "Editar perfil"{"\n"}
-                        - Haga clic en "Mi configuración de privacidad"{"\n"}
-                        - Establezca "Estado del perfil" en "Público"{"\n"}
-                        - Guardar cambios{"\n"}
-                    </Text>
-                </View>
-            </ScrollView>
-        </LinearGradient>
+            <View style={styles.instructionsContainer}>
+                <Text style={styles.instructionsTitle}>{"\n"}¿Cómo hacer que tu perfil de Steam público?</Text>
+                <Text style={styles.instructionsText}>
+                    {"\n"}Recuerda tener en cuenta estos pasos para que puedas acceder con tu cuenta de Steam:  {"\n"}
+                </Text>
+                <Text style={styles.instructionsList}>
+
+                    - Abrir Steam{"\n"}
+                    - Ve a tu página de perfil{"\n"}
+                    - Haga clic en "Editar perfil"{"\n"}
+                    - Haga clic en "Mi configuración de privacidad"{"\n"}
+                    - Establezca "Estado del perfil" en "Público"{"\n"}
+                    - Guardar cambios{"\n"}
+                </Text>
+            </View>
+        </ScrollView>
+
     );
 };
 
@@ -80,10 +80,12 @@ const styles = StyleSheet.create({
         color: "#Cfffff", // Verde eléctrico
     },
     instructionsContainer: {
-        backgroundColor: '#122022', // Un fondo más oscuro para el contenedor de instrucciones
-        padding: 10,
-        borderRadius: 8,
-        marginBottom: 100,
+        backgroundColor: '#121212', // Fondo oscuro
+        padding: 20,
+        borderRadius: 10, // Bordes redondeados
+        borderColor: '#00ff00', // Borde neón
+        borderWidth: 2,
+        marginBottom: 200,
     },
     instructionsTitle: {
         fontSize: 18,

@@ -38,8 +38,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#0E0E10', // Un fondo oscuro para resaltar los colores fosforescentes
+        backgroundColor: '#121212', // Un fondo oscuro para resaltar los colores fosforescentes
         paddingTop: 20,
+
     },
     title: {
         color: '#39FF14', // Un verde fosforescente para el título, muy llamativo

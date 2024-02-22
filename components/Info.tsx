@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#0E0E10', // Un fondo oscuro para resaltar los colores fosforescentes
+        backgroundColor: '#121212', // Un fondo oscuro para resaltar los colores fosforescentes
         paddingTop: 60,
     },
     title: {
