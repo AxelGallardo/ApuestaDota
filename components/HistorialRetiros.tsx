@@ -63,7 +63,8 @@ const HistorialRetiros: React.FC = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 20,
+        marginTop: 0,
+        marginBottom: 40,
         paddingHorizontal: 10,
         backgroundColor: '#121212',
         borderRadius: 10,

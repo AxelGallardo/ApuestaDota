@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     section: {
-        marginBottom: 20,
+        marginBottom: 5,
     },
     subtitulo: {
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: 'bold',
         color: 'black', // Color de texto blanco para contraste
         marginBottom: 10,
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     },
     subtituloButton: {
         backgroundColor: '#FFFF00', // Color verde claro
-        borderRadius: 5,
-        paddingVertical: 12,
+        borderRadius: 20,
+        paddingVertical: 10,
         paddingHorizontal: 20,
         width: 250,
         textAlign: 'center'

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from '../components/perfilStyles';
 import InformacionPersonal from './InformacionPersonal';
 import HistorialRetiros from './HistorialRetiros';
@@ -19,28 +19,63 @@ const Perfil: React.FC<PerfilProps> = ({ nombreUsuario, steamId }) => {
     const [mostrarApuestasTotales, setMostrarApuestasTotales] = useState(false);
     const [mostrarReferidos, setMostrarReferidos] = useState(false);
 
+    // Referencias para los botones
+    const informacionPersonalRef = useRef<ScrollView>(null);
+    const historialRetirosRef = useRef<ScrollView>(null);
+    const estadoDeCuentaRef = useRef<ScrollView>(null);
+    const apuestasTotalesRef = useRef<ScrollView>(null);
+    const referidosRef = useRef<ScrollView>(null);
+
+    const scrollToRef = (ref: React.RefObject<ScrollView>) => {
+        if (ref.current) {
+            ref.current.scrollTo({ y: 0, animated: true });
+        }
+    };
 
     const toggleInformacionPersonal = () => {
         setMostrarInformacionPersonal(!mostrarInformacionPersonal);
+        setMostrarHistorialRetiros(false);
+        setMostrarEstadoDeCuenta(false);
+        setMostrarApuestasTotales(false);
+        setMostrarReferidos(false);
+        scrollToRef(informacionPersonalRef);
     }
 
     const toggleHistorialRetiros = () => {
         setMostrarHistorialRetiros(!mostrarHistorialRetiros);
+        setMostrarInformacionPersonal(false);
+        setMostrarEstadoDeCuenta(false);
+        setMostrarApuestasTotales(false);
+        setMostrarReferidos(false);
+        scrollToRef(historialRetirosRef);
     }
 
-    const toggleEstadoDeCuenta = () => { // Función para cambiar el estado de mostrarEstadoDeCuenta
+    const toggleEstadoDeCuenta = () => {
         setMostrarEstadoDeCuenta(!mostrarEstadoDeCuenta);
+        setMostrarInformacionPersonal(false);
+        setMostrarHistorialRetiros(false);
+        setMostrarApuestasTotales(false);
+        setMostrarReferidos(false);
+        scrollToRef(estadoDeCuentaRef);
     }
 
-    const toggleApuestasTotales = () => { // Función para cambiar el estado de mostrarEstadoDeCuenta
+    const toggleApuestasTotales = () => {
         setMostrarApuestasTotales(!mostrarApuestasTotales);
+        setMostrarInformacionPersonal(false);
+        setMostrarHistorialRetiros(false);
+        setMostrarEstadoDeCuenta(false);
+        setMostrarReferidos(false);
+        scrollToRef(apuestasTotalesRef);
     }
-    const toggleReferidos = () => { // Función para cambiar el estado de mostrarEstadoDeCuenta
+
+    const toggleReferidos = () => {
         setMostrarReferidos(!mostrarReferidos);
+        setMostrarInformacionPersonal(false);
+        setMostrarHistorialRetiros(false);
+        setMostrarEstadoDeCuenta(false);
+        setMostrarApuestasTotales(false);
+        scrollToRef(referidosRef);
     }
-
-
-
 
     return (
         <View style={styles.container}>
@@ -55,37 +90,40 @@ const Perfil: React.FC<PerfilProps> = ({ nombreUsuario, steamId }) => {
             <Text style={styles.subtitulo2}>SteamID: {steamId}</Text>
             <Text style={styles.titulo}>Mi perfil</Text>
 
-            {/* Botón y componente de Información Personal */}
-            <TouchableOpacity onPress={toggleInformacionPersonal} style={styles.section}>
-                <Text style={[styles.subtitulo, styles.subtituloButton]}>Información Personal</Text>
-            </TouchableOpacity>
-            {mostrarInformacionPersonal && <InformacionPersonal />}
+            <ScrollView ref={informacionPersonalRef}>
+                <TouchableOpacity onPress={toggleInformacionPersonal} style={styles.section}>
+                    <Text style={[styles.subtitulo, styles.subtituloButton]}>Información Personal</Text>
+                </TouchableOpacity>
+                {mostrarInformacionPersonal && <InformacionPersonal />}
+            </ScrollView>
 
-            {/* Botón y componente de Historial de Retiros */}
-            <TouchableOpacity onPress={toggleHistorialRetiros} style={styles.section}>
-                <Text style={[styles.subtitulo, styles.subtituloButton]}>Historial de Retiros</Text>
-            </TouchableOpacity>
-            {mostrarHistorialRetiros && <HistorialRetiros />}
+            <ScrollView ref={historialRetirosRef}>
+                <TouchableOpacity onPress={toggleHistorialRetiros} style={styles.section}>
+                    <Text style={[styles.subtitulo, styles.subtituloButton]}>Historial de Retiros</Text>
+                </TouchableOpacity>
+                {mostrarHistorialRetiros && <HistorialRetiros />}
+            </ScrollView>
 
-            {/* Botón y componente de Estado de Cuenta */}
-            <TouchableOpacity onPress={toggleEstadoDeCuenta} style={styles.section}>
-                <Text style={[styles.subtitulo, styles.subtituloButton]}>Estado de Cuenta</Text>
-            </TouchableOpacity>
-            {mostrarEstadoDeCuenta && <EstadoDeCuenta />}
+            <ScrollView ref={estadoDeCuentaRef}>
+                <TouchableOpacity onPress={toggleEstadoDeCuenta} style={styles.section}>
+                    <Text style={[styles.subtitulo, styles.subtituloButton]}>Estado de Cuenta</Text>
+                </TouchableOpacity>
+                {mostrarEstadoDeCuenta && <EstadoDeCuenta />}
+            </ScrollView>
 
-            {/* Botón y componente de Apuestas Totales */}
-            <TouchableOpacity onPress={toggleApuestasTotales} style={styles.section}>
-                <Text style={[styles.subtitulo, styles.subtituloButton]}>Apuestas Totales</Text>
-            </TouchableOpacity>
-            {mostrarApuestasTotales && <ApuestasTotales />}
+            <ScrollView ref={apuestasTotalesRef}>
+                <TouchableOpacity onPress={toggleApuestasTotales} style={styles.section}>
+                    <Text style={[styles.subtitulo, styles.subtituloButton]}>Apuestas Totales</Text>
+                </TouchableOpacity>
+                {mostrarApuestasTotales && <ApuestasTotales />}
+            </ScrollView>
 
-
-            {/* Botón y componente de Referidos */}
-            <TouchableOpacity onPress={toggleReferidos} style={styles.section}>
-                <Text style={[styles.subtitulo, styles.subtituloButton]}>Referidos</Text>
-            </TouchableOpacity>
-            {mostrarReferidos && <Referidos />}
-
+            <ScrollView ref={referidosRef}>
+                <TouchableOpacity onPress={toggleReferidos} style={styles.section}>
+                    <Text style={[styles.subtitulo, styles.subtituloButton]}>Referidos</Text>
+                </TouchableOpacity>
+                {mostrarReferidos && <Referidos />}
+            </ScrollView>
 
         </View>
     );

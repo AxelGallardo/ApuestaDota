@@ -49,7 +49,8 @@ const HistorialRetiros: React.FC = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 20,
+        marginTop: 0,
+        marginBottom: 40,
         paddingHorizontal: 10,
         backgroundColor: '#121212', // Fondo oscuro para resaltar los colores "gamer"
         borderRadius: 10, // Bordes redondeados

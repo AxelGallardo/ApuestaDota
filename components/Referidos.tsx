@@ -1,55 +1,45 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 const Referidos: React.FC = () => {
+    const copyToClipboard = () => {
+        // Lógica para copiar el código de referido al portapapeles
+    };
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Movimientos de cuenta</Text>
+            <Text style={styles.title}>Mis referidos</Text>
             <View style={styles.tableHeader}>
                 <Text style={styles.headerText}>Fecha</Text>
-                <Text style={styles.headerText}>Importe</Text>
-                <Text style={styles.headerText}>Origen</Text>
-
+                <Text style={styles.headerText}>Usuario</Text>
+                <Text style={styles.headerText}>Comisión</Text>
             </View>
             <View style={styles.tableRow}>
                 <Text style={styles.cell}>27/07/2023 {'\n'}10:48 pm</Text>
-                <Text style={styles.cell}>20.00</Text>
-                <Text style={styles.cell}>APUESTA PERDIDA</Text>
-
+                <Text style={styles.cell}>Tu Carry</Text>
+                <Text style={styles.cell}>+2.00</Text>
             </View>
-            <View style={styles.tableRow}>
-                <Text style={styles.cell}>20/06/2023 {'\n'}10:46 pm</Text>
-                <Text style={styles.cell}>20.00</Text>
-                <Text style={styles.cell}>APUESTA GANADA</Text>
-
+            {/* Información sobre referidos */}
+            <View style={[styles.referidosContainer, { justifyContent: 'center' }]}>
+                <Text style={styles.referidosTitle}>Recomienda ApuestaDota a un amigo y gana dinero extra</Text>
+                <Text style={styles.referidosText}>1. Invita a tus amigos a unirse a ApuestaDota.</Text>
+                <Text style={styles.referidosText}>2. Cuando tu amigo utilice tu código deberá realizar su primera apuesta. Después de completar con los requisitos, tú recibirás S/ 2.00 por cada referido!</Text>
+                <Text style={styles.referidosText}>Tu código de referido es:</Text>
+                <View style={styles.codeContainer}>
+                    <Text style={styles.referidoCode}>XXAXEL123</Text>
+                    <TouchableOpacity onPress={copyToClipboard}>
+                        <Image source={require('../images/copiar.png')} style={styles.copyIcon} />
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.tableRow}>
-                <Text style={styles.cell}>19/04/2023 {'\n'}01:38 pm</Text>
-                <Text style={styles.cell}>25.00</Text>
-                <Text style={styles.cell}>DEPOSITO</Text>
-
-            </View>
-            <View style={styles.tableRow}>
-                <Text style={styles.cell}>07/03/2023 {'\n'}02:43 pm</Text>
-                <Text style={styles.cell}>20.00</Text>
-                <Text style={styles.cell}>RETIRO</Text>
-
-            </View>
-
-            <View style={styles.tableRow}>
-                <Text style={styles.cell}>07/03/2023 {'\n'}02:41 pm</Text>
-                <Text style={styles.cell}>2.00</Text>
-                <Text style={styles.cell}>BONO</Text>
-
-            </View>
-
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 20,
+        marginTop: 0,
+        marginBottom: 40,
         paddingHorizontal: 10,
         backgroundColor: '#121212', // Fondo oscuro para resaltar los colores "gamer"
         borderRadius: 10, // Bordes redondeados
@@ -89,6 +79,40 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#00ff00', // Texto neón para las celdas
         paddingVertical: 5, // Espacio vertical para las celdas
+    },
+    referidosContainer: {
+        marginTop: 20,
+        padding: 10,
+        backgroundColor: '#222',
+        borderRadius: 10,
+    },
+    referidosTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#00ff00',
+        marginBottom: 10,
+    },
+    referidosText: {
+        color: '#FFFFFF',
+        marginBottom: 5,
+    },
+    codeContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    referidoCode: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#00ff00',
+        marginBottom: 10,
+        marginRight: 10,
+    },
+    copyIcon: {
+        width: 24,
+        height: 24,
+        tintColor: '#00ff00', // Color del ícono
+
     },
 });
 
