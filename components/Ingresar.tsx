@@ -18,6 +18,14 @@ const Ingresar = () => {
         }
     };
 
+
+
+
+
+
+
+
+
     return (
 
         <ScrollView contentContainerStyle={styles.scrollView}>
