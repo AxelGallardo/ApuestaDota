@@ -6,30 +6,48 @@ import Footer from './components/Footer';
 import Real from './components/Real';
 import Practica from './components/Practica';
 import Versus from './components/Versus';
-import Configuracion from './components/Configuracion'; // Importa el componente de Configuracion
+import Configuracion from './components/Configuracion';
 import Info from "./components/Info";
+import Notificacion from "./components/Notificacion";
 
 const App = () => {
   const [content, setContent] = useState('Real');
   const [isSettingsVisible, setIsSettingsVisible] = useState(false);
   const [isInfoVisible, setIsInfoVisible] = useState(false);
+  const [isNotificacionVisible, setIsNotificacionVisible] = useState(false);
 
   const changeContent = (selectedContent) => {
     setContent(selectedContent);
-    setIsSettingsVisible(false); // Asegura que la configuración se cierra
-    setIsInfoVisible(false); // Asegura que la información se cierra si está abierta
+    setIsSettingsVisible(false);
+    setIsInfoVisible(false);
+    setIsNotificacionVisible(false);
   };
+
   const toggleSettings = () => {
     setIsSettingsVisible(!isSettingsVisible);
-    // Asegurarse de ocultar la información si está visible
     if (isInfoVisible) setIsInfoVisible(false);
+    if (isNotificacionVisible) setIsNotificacionVisible(false);
   };
 
   const toggleInfo = () => {
     setIsInfoVisible(!isInfoVisible);
-    // Asegurarse de ocultar configuración si está visible
     if (isSettingsVisible) setIsSettingsVisible(false);
+    if (isNotificacionVisible) setIsNotificacionVisible(false);
   };
+
+  const toggleNotificacion = () => {
+    setIsNotificacionVisible(!isNotificacionVisible);
+    if (isSettingsVisible) setIsSettingsVisible(false);
+    if (isInfoVisible) setIsInfoVisible(false);
+  };
+
+  const changeToMainSection = () => {
+    setContent('Real'); // Asume 'Real' como la sección principal
+    setIsSettingsVisible(false);
+    setIsInfoVisible(false);
+    setIsNotificacionVisible(false);
+  };
+
 
   const renderContent = () => {
     switch (content) {
@@ -43,6 +61,8 @@ const App = () => {
         return <Configuracion />;
       case 'Infor': // Agrega un caso para renderizar el componente de configuración
         return <Info />;
+      case 'Notificacion': // Agrega un caso para renderizar el componente de configuración
+        return <Notificacion />;
       default:
         return null;
     }
@@ -52,11 +72,10 @@ const App = () => {
     <LinearGradient
       colors={['#0A1D21', '#0A1D21', '#0A1D21']}
       style={styles.container}>
-      <Header onSettingsPress={toggleSettings} onInfoPress={toggleInfo} />
+      <Header onSettingsPress={toggleSettings} onInfoPress={toggleInfo} onNotificacionPress={toggleNotificacion} onMainPress={changeToMainSection} />
       <View style={styles.content}>
-        {isSettingsVisible ? <Configuracion /> : isInfoVisible ? <Info /> : renderContent()}
+        {isSettingsVisible ? <Configuracion /> : isInfoVisible ? <Info /> : isNotificacionVisible ? <Notificacion /> : renderContent()}
       </View>
-      {/* Siempre mostrar el Footer, independientemente de isSettingsVisible o isInfoVisible */}
       <Footer changeContent={changeContent} />
     </LinearGradient>
   );

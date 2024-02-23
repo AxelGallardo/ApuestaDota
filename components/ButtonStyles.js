@@ -19,7 +19,7 @@ export const buttonStyles = StyleSheet.create({
   },
 
   selectedButton: {
-    backgroundColor: '#39FF14', // Cambia el color de fondo cuando está seleccionado
+    backgroundColor: '#FF5733', // Cambia el color de fondo cuando está seleccionado
     marginBottom: 10,
     
     

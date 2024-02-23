@@ -1,15 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const Header = ({ onSettingsPress, onInfoPress }) => {
-
-
+const Header = ({ onSettingsPress, onInfoPress, onNotificacionPress, onMainPress }) => {
     return (
         <View style={styles.header}>
-            <View style={styles.olimpoContainer}>
+            <TouchableOpacity onPress={onMainPress} style={styles.olimpoContainer}>
                 <Image source={require('../images/apuestadota.png')} style={styles.headerImage} />
-            </View>
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={onNotificacionPress} style={styles.notificacionButton}>
+                <Image source={require('../images/notificacion.png')} style={styles.infoIcon} />
+            </TouchableOpacity>
 
             <TouchableOpacity onPress={onInfoPress} style={styles.infoButton}>
                 <Image source={require('../images/informacion.png')} style={styles.infoIcon} />
@@ -37,13 +38,21 @@ const styles = StyleSheet.create({
         marginLeft: 0, // Ajuste del margen izquierdo
     },
     headerImage: {
-        width: 250, // Ajusta el ancho de la imagen según sea necesario
+        width: 200, // Ajusta el ancho de la imagen según sea necesario
         height: 36, // Ajusta el alto de la imagen según sea necesario
     },
     settingsButton: {
         padding: 10,
     },
     settingsIcon: {
+        width: 24,
+        height: 24,
+        tintColor: 'white',
+    },
+    notificacionButton: {
+        padding: 10,
+    },
+    notificacionIcon: {
         width: 24,
         height: 24,
         tintColor: 'white',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Info = () => {
+const Notificacion = () => {
     const [selectedButton, setSelectedButton] = useState<string | null>(null);
 
     const handleButtonPress = (buttonName: string) => {
@@ -12,7 +12,7 @@ const Info = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>¿Cómo jugar?</Text>
+            <Text style={styles.title}>Notificaciones</Text>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
                     style={[styles.button, selectedButton === 'Apuesta Real' && styles.selectedButton]}
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Info;
+export default Notificacion;

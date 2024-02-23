@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     subtituloButton: {
-        backgroundColor: '#FFFF00', // Color verde claro
+        backgroundColor: '#EDBD0E', // Color verde claro
         borderRadius: 20,
         paddingVertical: 10,
         paddingHorizontal: 20,

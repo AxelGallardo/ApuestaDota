@@ -19,6 +19,8 @@ const Footer = ({ changeContent }) => {
         </TouchableOpacity>
     );
 
+
+
     return (
         <View style={styles.container}>
             <Text style={styles.headerText}>Elige el tipo de apuesta...</Text>
@@ -56,21 +58,21 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#000000', // Fondo oscuro para un look futurista
+        backgroundColor: '#61FF79', // Fondo oscuro para un look futurista
         borderWidth: 2,
         borderColor: 'transparent', // Bordes oro para contraste
     },
     selectedButton: {
-        backgroundColor: '#0C9610', // Naranja intenso para el botón seleccionado, vibrante cyberpunk
+        backgroundColor: '#FF5733', // #0C9610 Naranja intenso para el botón seleccionado, vibrante cyberpunk
     },
     buttonText: {
-        color: '#FFFFFF', // Texto blanco para contraste
+        color: '#0A1D21', // Texto blanco para contraste
         fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
     },
     selectedButtonText: {
-        color: '#fff', // Texto negro para resaltar sobre el naranja
+        color: '#0A1D21', // Texto negro para resaltar sobre el naranja
     },
 });
 

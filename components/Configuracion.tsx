@@ -18,7 +18,7 @@ const Configuracion = () => {
     return (
         <View style={styles.container}>
             <ScrollView style={styles.scrollViewStyle}>
-                <Text style={styles.title}>Configuración</Text>
+                <Text style={styles.title}>Menú</Text>
                 <MenuComponent onSelectItem={handleSelectItem} />
 
                 {activeScreen === 'PERFIL' ? <Perfil /> : null}
@@ -27,6 +27,7 @@ const Configuracion = () => {
                 {activeScreen === 'TUTORIAL' ? <Tutorial /> : null}
                 {activeScreen === 'TERMINOS' ? <Terminos /> : null}
                 {activeScreen === 'INGRESAR' ? <Ingresar /> : null}
+
                 {/* Elimina el comentario para evitar errores */}
             </ScrollView>
         </View>
