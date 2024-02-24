@@ -2392,6 +2392,13 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.npmjs.org/@types/axios/-/axios-0.14.0.tgz"
+  integrity sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==
+  dependencies:
+    axios "*"
+
 "@types/babel__core@^7.1.14":
   version "7.20.5"
   resolved "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.20.5.tgz"
@@ -2477,6 +2484,14 @@
   version "15.7.11"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.11.tgz"
   integrity sha512-ga8y9v9uyeiLdpKddhxYQkxNDrfvuPrlFb0N1qnZZByvcElJaXthF1UhvCh9TLWJBEHeNtdnbysW7Y6Uq8CVng==
+
+"@types/react-native-snap-carousel@^3.8.10":
+  version "3.8.10"
+  resolved "https://registry.npmjs.org/@types/react-native-snap-carousel/-/react-native-snap-carousel-3.8.10.tgz"
+  integrity sha512-i/zkAWX2e0voSfGJBduNl4JIYNCvGjkjcZn4b6NRalqVVFuTBkph1u4GHLStujZdzdt7pPApKRFxzQJR5EEdng==
+  dependencies:
+    "@types/react" "*"
+    react-native "*"
 
 "@types/react-test-renderer@^18.0.0":
   version "18.0.7"
@@ -2895,7 +2910,7 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.npmjs.org/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-axios@^1.6.7:
+axios@*, axios@^1.6.7:
   version "1.6.7"
   resolved "https://registry.npmjs.org/axios/-/axios-1.6.7.tgz"
   integrity sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==
@@ -6030,10 +6045,15 @@ lighthouse-logger@^1.0.0:
     debug "^2.6.9"
     marky "^1.2.2"
 
-lightningcss-win32-x64-msvc@1.19.0:
+lightningcss-linux-x64-gnu@1.19.0:
   version "1.19.0"
-  resolved "https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.19.0.tgz"
-  integrity sha512-C+VuUTeSUOAaBZZOPT7Etn/agx/MatzJzGRkeV+zEABmPuntv1zihncsi+AyGmjkkzq3wVedEy7h0/4S84mUtg==
+  resolved "https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.19.0.tgz"
+  integrity sha512-0AFQKvVzXf9byrXUq9z0anMGLdZJS+XSDqidyijI5njIwj6MdbvX2UZK/c4FfNmeRa2N/8ngTffoIuOUit5eIQ==
+
+lightningcss-linux-x64-musl@1.19.0:
+  version "1.19.0"
+  resolved "https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.19.0.tgz"
+  integrity sha512-SJoM8CLPt6ECCgSuWe+g0qo8dqQYVcPiW2s19dxkmSI5+Uu1GIRzyKA0b7QqmEXolA+oSJhQqCmJpzjY4CuZAg==
 
 lightningcss@~1.19.0:
   version "1.19.0"
